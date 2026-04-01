@@ -1,7 +1,7 @@
 
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/your-org/catcrs/main/assets/logo-horizontal.png" alt="Catcrs Logo" width="340"/>
+<img src="https://raw.githubusercontent.com/SusiloSutedja/CATCRS/main/Catcrs Logo.png" alt="Catcrs Logo" width="340"/>
 
 <br/>
 
@@ -184,7 +184,7 @@ User protection is embedded across the **entire account lifecycle**:
 | | |
 |:---:|:---:|
 | 🌐 **Website** | [catcrs.org](https://catcrs.org) |
-| 🐦 **Twitter / X** | [@Catcrs_l](https://x.com/Catcrs_) |
+| 🐦 **Twitter / X** | [@Catcrs_](https://x.com/Catcrs_) |
 | 📘 **Facebook** | [facebook.com/Catcrs](https://facebook.com/Catcrs) |
 | 📧 **Support** | support@catcrs.org |
 | 🏢 **HQ** | 1331 17th St, Denver, Colorado 80202, USA |
@@ -197,11 +197,11 @@ User protection is embedded across the **entire account lifecycle**:
 
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/your-org/catcrs/main/assets/logo-vertical.png" alt="Catcrs" width="80"/>
+<img src="https://raw.githubusercontent.com/SusiloSutedja/CATCRS/main/Catcrs.jpg" alt="Catcrs" width="80"/>
 
 <br/>
 
-**© 2025 Catcrs Block Holding. All rights reserved.**
+**© 2026 Catcrs Block Holding. All rights reserved.**
 
 *Security First · Compliance as Foundation · Transparency & Verifiability · Practical Usability*
 
