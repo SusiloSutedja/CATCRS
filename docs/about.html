@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — Catcrs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Sora:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#080c14;--bg2:#0d1220;--border:rgba(99,179,237,.15);--accent:#3b9eff;--accent2:#00e5c8;--accent3:#7c5bff;--text:#e2ecff;--muted:#7b91b0;--card:rgba(255,255,255,.03);--glow:rgba(59,158,255,.12);}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;overflow-x:hidden;}
+  .top-banner{background:linear-gradient(90deg,var(--accent3),var(--accent));text-align:center;padding:10px 20px;font-family:'Space Mono',monospace;font-size:13px;position:sticky;top:0;z-index:1000;}
+  .top-banner a{color:#fff;text-decoration:none;font-weight:700;border-bottom:1px solid rgba(255,255,255,.5);}
+  nav{position:sticky;top:40px;z-index:999;background:rgba(8,12,20,.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:64px;}
+  .nav-logo{font-family:'Space Mono',monospace;font-size:20px;font-weight:700;color:var(--accent);text-decoration:none;letter-spacing:.08em;}
+  .nav-logo span{color:var(--accent2);}
+  .nav-links{display:flex;gap:6px;}
+  .nav-links a{color:var(--muted);text-decoration:none;font-size:13.5px;padding:8px 16px;border-radius:8px;transition:all .2s;font-weight:600;}
+  .nav-links a:hover,.nav-links a.active{color:var(--accent);background:var(--glow);}
+
+  .page-hero{padding:80px 40px 60px;max-width:1140px;margin:0 auto;}
+  .page-tag{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent2);margin-bottom:16px;display:block;}
+  .page-hero h1{font-size:clamp(32px,5vw,58px);font-weight:700;letter-spacing:-.02em;margin-bottom:16px;}
+  .page-hero h1 .grad{background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+  .page-hero p{font-size:17px;color:var(--muted);max-width:640px;line-height:1.8;}
+
+  .content{max-width:1140px;margin:0 auto;padding:0 40px 100px;}
+  .section-divider{border:none;border-top:1px solid var(--border);margin:64px 0;}
+  .sec-head{margin-bottom:40px;}
+  .sec-head .label{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.12em;color:var(--accent);text-transform:uppercase;margin-bottom:10px;display:block;}
+  .sec-head h2{font-size:clamp(22px,3vw,32px);font-weight:700;letter-spacing:-.01em;margin-bottom:12px;}
+  .sec-head p{font-size:15px;color:var(--muted);max-width:600px;line-height:1.75;}
+
+  .mission-block{background:linear-gradient(135deg,rgba(59,158,255,.07),rgba(0,229,200,.07));border:1px solid rgba(59,158,255,.2);border-radius:20px;padding:56px;margin-bottom:64px;}
+  .mission-block blockquote{font-size:clamp(20px,3vw,28px);font-weight:600;line-height:1.45;letter-spacing:-.01em;margin-bottom:20px;}
+  .mission-block blockquote span{color:var(--accent2);}
+  .mission-block p{font-size:15px;color:var(--muted);max-width:660px;line-height:1.75;}
+
+  .team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .team-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:28px;transition:border-color .2s;}
+  .team-card:hover{border-color:rgba(59,158,255,.4);}
+  .team-role{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.1em;color:var(--accent2);text-transform:uppercase;margin-bottom:8px;}
+  .team-name{font-size:18px;font-weight:700;margin-bottom:10px;}
+  .team-quote{font-size:12.5px;color:var(--accent);font-style:italic;margin-bottom:10px;font-family:'Space Mono',monospace;}
+  .team-desc{font-size:13.5px;color:var(--muted);line-height:1.65;}
+
+  .timeline{position:relative;padding-left:32px;}
+  .timeline::before{content:'';position:absolute;left:8px;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,var(--accent),transparent);}
+  .timeline-item{position:relative;margin-bottom:36px;}
+  .timeline-item::before{content:'';position:absolute;left:-28px;top:6px;width:9px;height:9px;border-radius:50%;background:var(--accent);box-shadow:0 0 12px var(--accent);}
+  .timeline-date{font-family:'Space Mono',monospace;font-size:12px;color:var(--accent2);letter-spacing:.08em;margin-bottom:4px;}
+  .timeline-text{font-size:14.5px;color:var(--muted);}
+
+  .values-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;}
+  .value-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:28px;}
+  .value-card .vi{font-size:28px;margin-bottom:12px;}
+  .value-card h4{font-size:16px;font-weight:700;margin-bottom:8px;}
+  .value-card p{font-size:13.5px;color:var(--muted);line-height:1.7;}
+
+  footer{background:var(--bg2);border-top:1px solid var(--border);padding:40px;}
+  .footer-inner{max-width:1140px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;}
+  .footer-logo{font-family:'Space Mono',monospace;font-size:18px;font-weight:700;color:var(--accent);}
+  .footer-logo span{color:var(--accent2);}
+  .footer-inner p{font-size:13px;color:var(--muted);}
+  .footer-inner a{color:var(--accent);text-decoration:none;font-size:13px;font-family:'Space Mono',monospace;}
+  @media(max-width:768px){
+    nav{padding:0 16px;}.nav-links a{padding:6px 10px;font-size:12px;}
+    .team-grid,.values-grid{grid-template-columns:1fr;}
+    .page-hero,.content{padding-left:20px;padding-right:20px;}
+    .mission-block{padding:32px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="top-banner">🌐 Official Exchange &nbsp;→&nbsp; <a href="https://catcrs.com" target="_blank">catcrs.com</a></div>
+
+<nav>
+  <a href="index.html" class="nav-logo">CAT<span>CRS</span></a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="security.html">Security</a>
+    <a href="compliance.html">Compliance</a>
+    <a href="products.html">Products</a>
+    <a href="about.html" class="active">About</a>
+    <a href="faq.html">FAQ</a>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <span class="page-tag">About Catcrs</span>
+  <h1>Platform Built on <span class="grad">Principles</span></h1>
+  <p>Catcrs was initiated in October 2020 with a single commitment: to build a crypto asset exchange where security and transparency are not features — they are the foundation.</p>
+</div>
+
+<div class="content">
+
+  <div class="mission-block">
+    <blockquote>"Culture as System, <span>Trust as Productivity</span>"</blockquote>
+    <p>Our long-term pledge is "security first, compliance as the foundation, transparency and verifiability, and practical usability." We apply engineering and governance to transform this philosophy into capabilities that users and institutions can directly perceive — not just promises that appear in marketing materials.</p>
+  </div>
+
+  <!-- Values -->
+  <div class="sec-head">
+    <span class="label">Core Values</span>
+    <h2>What We Stand For</h2>
+    <p>Four principles guide every decision we make — in engineering, compliance, product design, and communications.</p>
+  </div>
+
+  <div class="values-grid" style="margin-bottom:64px;">
+    <div class="value-card">
+      <div class="vi">🔐</div>
+      <h4>Security First</h4>
+      <p>Security is never traded off for speed or convenience. Default-secure configurations, hardware key management, and mandatory multi-factor authentication apply to all accounts without exception.</p>
+    </div>
+    <div class="value-card">
+      <div class="vi">📋</div>
+      <h4>Compliance as Foundation</h4>
+      <p>Compliance is a prerequisite for operation, not a constraint we work around. We complete regulatory requirements before entering new markets — not after.</p>
+    </div>
+    <div class="value-card">
+      <div class="vi">🔭</div>
+      <h4>Transparent & Verifiable</h4>
+      <p>We make our operations visible. Status pages, proof-of-reserves methodology, incident timelines, and root cause summaries give external parties the ability to evaluate us — not just trust us.</p>
+    </div>
+    <div class="value-card">
+      <div class="vi">⚙️</div>
+      <h4>Practically Usable</h4>
+      <p>Our commitments are meaningless if users cannot access them. We build interfaces that are explainable, predictable, and designed to reduce uncertainty — not amplify it.</p>
+    </div>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- Team -->
+  <div class="sec-head" id="team">
+    <span class="label">Leadership</span>
+    <h2>Core Team</h2>
+    <p>Seasoned professionals across financial infrastructure, compliance law, security engineering, and institutional trading.</p>
+  </div>
+
+  <div class="team-grid">
+    <div class="team-card">
+      <div class="team-role">Co-Founder & CEO</div>
+      <div class="team-name">Ethan Brooks</div>
+      <div class="team-quote">"Making invisible risks visible through clear rules."</div>
+      <div class="team-desc">Serial entrepreneur with over a decade of experience in financial infrastructure and risk management systems. Leads overall platform strategy and governance.</div>
+    </div>
+    <div class="team-card">
+      <div class="team-role">Co-Founder & CTO</div>
+      <div class="team-name">Maya Thompson</div>
+      <div class="team-quote">"Recoverability defines reliability."</div>
+      <div class="team-desc">Former technical lead for large-scale trading systems. Led reconstruction of matching engine v2 and the observability platform. Defines engineering standards and resilience architecture.</div>
+    </div>
+    <div class="team-card">
+      <div class="team-role">Chief Compliance Officer</div>
+      <div class="team-name">Rizky Putra</div>
+      <div class="team-quote">"Localized operations and conservative interpretation."</div>
+      <div class="team-desc">Compliance attorney with multi-jurisdictional expertise in KYC, AML, sanctions, and licensing frameworks. Oversees regulatory relationships and cross-border compliance.</div>
+    </div>
+    <div class="team-card">
+      <div class="team-role">Chief Security Officer</div>
+      <div class="team-name">Elena Petrova</div>
+      <div class="team-quote">"Making practice into muscle memory."</div>
+      <div class="team-desc">Expert in offensive and defensive security and key custody. Drives threshold signature scheme implementation and red-blue team adversarial exercises across the platform.</div>
+    </div>
+    <div class="team-card">
+      <div class="team-role">Chief Product Officer</div>
+      <div class="team-name">Ava Mitchell</div>
+      <div class="team-quote">"Problem before solution, causality before conclusion."</div>
+      <div class="team-desc">Specializes in trading experience design and risk education. Leads the Catcrs Academy initiative and "explainable experience" product philosophy.</div>
+    </div>
+    <div class="team-card">
+      <div class="team-role">Chief Financial Officer</div>
+      <div class="team-name">Michael Grant</div>
+      <div class="team-quote">"Explainable fees and clear boundaries in disclosures."</div>
+      <div class="team-desc">Auditing and capital market background. Manages financial operations, fee structure governance, and proof-of-reserves disclosure framework.</div>
+    </div>
+    <div class="team-card">
+      <div class="team-role">Head of Institutional Business</div>
+      <div class="team-name">Sophia Ramirez</div>
+      <div class="team-quote">"Low latency, predictable, and auditable."</div>
+      <div class="team-desc">Responsible for market making, brokerage, and custody solutions. Drives institutional onboarding and partnership development for professional trading clients.</div>
+    </div>
+    <div class="team-card">
+      <div class="team-role">Head of Engineering Platform</div>
+      <div class="team-name">Sanjay Kumar</div>
+      <div class="team-quote">"Change failure rate, MTTR, availability."</div>
+      <div class="team-desc">Leads engineering efficiency and cost governance. Established the three platform health metrics: change failure rate, mean time to recovery, and availability compliance rate.</div>
+    </div>
+    <div class="team-card">
+      <div class="team-role">Head of Marketing & Brand</div>
+      <div class="team-name">Isabella Rossi</div>
+      <div class="team-quote">"Measured tone and verifiable narrative."</div>
+      <div class="team-desc">Oversees educational content, anti-scam resource libraries, and multilingual communication. Ensures all public messaging is fact-based and free of unverifiable claims.</div>
+    </div>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- Milestones -->
+  <div class="sec-head" id="milestones">
+    <span class="label">History</span>
+    <h2>Key Milestones</h2>
+    <p>A consistent execution record since founding — built on the principle of "foundation first, expansion second."</p>
+  </div>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-date">October 2020</div>
+      <div class="timeline-text">Project initiated. Technical and operational roadmap established with security and transparency as first principles.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">March 2021</div>
+      <div class="timeline-text">Alpha matching engine and strategic risk control prototype completed. Closed testing commenced.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">October 21, 2021</div>
+      <div class="timeline-text">U.S. MSB (FinCEN) registration completed. KYC/AML and sanctions screening processes implemented and operational.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">February 2022</div>
+      <div class="timeline-text">Spot trading Beta launched. Cold/hot wallet v1 deployed with address reputation scoring and rules engine on deposit and withdrawal channels.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">May 2022</div>
+      <div class="timeline-text">Status page trial launched. External event timeline template established for standardized incident communication.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">August 2022</div>
+      <div class="timeline-text">First institutional market makers onboarded. API v1 released. Integrated matching and risk control mechanisms fully formed.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">March 2023</div>
+      <div class="timeline-text">Market integrity rulebook expanded with manipulation detection and abnormal volatility circuit breakers. Delisting and disclosure templates improved.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">July 2023</div>
+      <div class="timeline-text">Educational and anti-scam content library launched with multilingual coverage across all key languages.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">October 2023</div>
+      <div class="timeline-text">Matching engine v2 and API v3 (including FIX protocol) launched. Significant improvements in latency and order sequence consistency metrics.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">May 2024</div>
+      <div class="timeline-text">Multi-region disaster recovery drills normalized and standardized. Rollback procedures fully rehearsed and documented.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">October 2024</div>
+      <div class="timeline-text">HSM and multi-signature strategies upgraded. Abnormal withdrawal delays and secondary confirmations deployed for major assets. Institutional settlement tools upgraded.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">May 2025</div>
+      <div class="timeline-text">Status page transparency upgraded. Standardized display of major event timelines and root cause summaries. Compliance partner network expanded.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">October 2025</div>
+      <div class="timeline-text">Internal Proof-of-Reserves (PoR) trial completed with method review. Disclosure baseline and improvement list established.</div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">CAT<span>CRS</span></div>
+    <p>© 2025 Catcrs. Informational purposes only.</p>
+    <a href="mailto:support@catcrs.com">support@catcrs.com</a>
+  </div>
+</footer>
+</body>
+</html>

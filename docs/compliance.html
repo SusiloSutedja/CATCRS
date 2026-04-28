@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Compliance — Catcrs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Sora:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#080c14;--bg2:#0d1220;--border:rgba(99,179,237,.15);--accent:#3b9eff;--accent2:#00e5c8;--accent3:#7c5bff;--text:#e2ecff;--muted:#7b91b0;--card:rgba(255,255,255,.03);--glow:rgba(59,158,255,.12);}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;overflow-x:hidden;}
+  .top-banner{background:linear-gradient(90deg,var(--accent3),var(--accent));text-align:center;padding:10px 20px;font-family:'Space Mono',monospace;font-size:13px;position:sticky;top:0;z-index:1000;}
+  .top-banner a{color:#fff;text-decoration:none;font-weight:700;border-bottom:1px solid rgba(255,255,255,.5);}
+  nav{position:sticky;top:40px;z-index:999;background:rgba(8,12,20,.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:64px;}
+  .nav-logo{font-family:'Space Mono',monospace;font-size:20px;font-weight:700;color:var(--accent);text-decoration:none;letter-spacing:.08em;}
+  .nav-logo span{color:var(--accent2);}
+  .nav-links{display:flex;gap:6px;}
+  .nav-links a{color:var(--muted);text-decoration:none;font-size:13.5px;padding:8px 16px;border-radius:8px;transition:all .2s;font-weight:600;}
+  .nav-links a:hover,.nav-links a.active{color:var(--accent);background:var(--glow);}
+
+  .page-hero{padding:80px 40px 60px;max-width:1140px;margin:0 auto;}
+  .page-tag{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent2);margin-bottom:16px;display:block;}
+  .page-hero h1{font-size:clamp(32px,5vw,58px);font-weight:700;letter-spacing:-.02em;margin-bottom:16px;}
+  .page-hero h1 .grad{background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+  .page-hero p{font-size:17px;color:var(--muted);max-width:640px;line-height:1.8;}
+
+  .content{max-width:1140px;margin:0 auto;padding:0 40px 100px;}
+  .section-divider{border:none;border-top:1px solid var(--border);margin:64px 0;}
+  .sec-head{margin-bottom:40px;}
+  .sec-head .label{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.12em;color:var(--accent);text-transform:uppercase;margin-bottom:10px;display:block;}
+  .sec-head h2{font-size:clamp(22px,3vw,32px);font-weight:700;letter-spacing:-.01em;margin-bottom:12px;}
+  .sec-head p{font-size:15px;color:var(--muted);max-width:600px;line-height:1.75;}
+
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:28px;}
+  .card-icon{font-size:28px;margin-bottom:14px;}
+  .card h3{font-size:16px;font-weight:700;margin-bottom:10px;}
+  .card p{font-size:13.5px;color:var(--muted);line-height:1.7;}
+
+  .cert-block{background:linear-gradient(135deg,rgba(0,229,200,.07),rgba(59,158,255,.07));border:1px solid rgba(0,229,200,.25);border-radius:20px;padding:48px;margin-bottom:32px;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;}
+  .cert-badge{font-family:'Space Mono',monospace;}
+  .cert-badge .big{font-size:48px;color:var(--accent2);font-weight:700;display:block;line-height:1;}
+  .cert-badge .label{font-size:12px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-top:8px;display:block;}
+  .cert-detail h3{font-size:22px;font-weight:700;margin-bottom:12px;}
+  .cert-detail p{font-size:14.5px;color:var(--muted);line-height:1.75;}
+  .cert-detail .date{font-family:'Space Mono',monospace;font-size:12px;color:var(--accent);margin-top:16px;display:block;}
+  .dot{width:7px;height:7px;border-radius:50%;background:var(--accent2);display:inline-block;animation:pulse 2s infinite;margin-right:8px;}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:32px;}
+  .feature-list{list-style:none;}
+  .feature-list li{display:flex;gap:12px;align-items:flex-start;margin-bottom:22px;}
+  .feature-list li .icon{width:36px;height:36px;border-radius:10px;background:var(--glow);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;margin-top:2px;}
+  .feature-list li div{flex:1;}
+  .feature-list li strong{display:block;font-size:15px;margin-bottom:4px;}
+  .feature-list li span{font-size:13.5px;color:var(--muted);}
+
+  .highlight-box{background:linear-gradient(135deg,rgba(59,158,255,.07),rgba(124,91,255,.07));border:1px solid rgba(59,158,255,.2);border-radius:16px;padding:36px;}
+  .highlight-box h3{font-size:19px;font-weight:700;margin-bottom:12px;}
+  .highlight-box p{font-size:14.5px;color:var(--muted);line-height:1.75;}
+  .tag-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px;}
+  .tag{background:rgba(59,158,255,.08);border:1px solid rgba(59,158,255,.2);border-radius:100px;padding:6px 14px;font-size:12px;color:var(--accent);font-family:'Space Mono',monospace;}
+
+  .roadmap-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;}
+  .roadmap-item{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:28px;}
+  .roadmap-item .rnum{font-family:'Space Mono',monospace;font-size:11px;color:var(--accent2);letter-spacing:.1em;margin-bottom:10px;}
+  .roadmap-item h4{font-size:16px;font-weight:700;margin-bottom:10px;}
+  .roadmap-item p{font-size:13.5px;color:var(--muted);line-height:1.7;}
+
+  footer{background:var(--bg2);border-top:1px solid var(--border);padding:40px;}
+  .footer-inner{max-width:1140px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;}
+  .footer-logo{font-family:'Space Mono',monospace;font-size:18px;font-weight:700;color:var(--accent);}
+  .footer-logo span{color:var(--accent2);}
+  .footer-inner p{font-size:13px;color:var(--muted);}
+  .footer-inner a{color:var(--accent);text-decoration:none;font-size:13px;font-family:'Space Mono',monospace;}
+
+  @media(max-width:768px){
+    nav{padding:0 16px;}.nav-links a{padding:6px 10px;font-size:12px;}
+    .cards{grid-template-columns:1fr;}.two-col{grid-template-columns:1fr;}
+    .cert-block{grid-template-columns:1fr;}.roadmap-grid{grid-template-columns:1fr;}
+    .page-hero,.content{padding-left:20px;padding-right:20px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="top-banner">🌐 Official Exchange &nbsp;→&nbsp; <a href="https://catcrs.com" target="_blank">catcrs.com</a></div>
+
+<nav>
+  <a href="index.html" class="nav-logo">CAT<span>CRS</span></a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="security.html">Security</a>
+    <a href="compliance.html" class="active">Compliance</a>
+    <a href="products.html">Products</a>
+    <a href="about.html">About</a>
+    <a href="faq.html">FAQ</a>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <span class="page-tag">Compliance & Regulation</span>
+  <h1>Compliance as <span class="grad">Foundation</span></h1>
+  <p>Compliance is a prerequisite for operation, not an afterthought. Catcrs has completed U.S. MSB registration with FinCEN and adheres to BSA/AML obligations, FATF Travel Rule guidelines, and localized requirements across all operating jurisdictions.</p>
+</div>
+
+<div class="content">
+
+  <!-- Certification -->
+  <div class="cert-block">
+    <div class="cert-badge">
+      <span class="big">MSB</span>
+      <span class="label"><span class="dot"></span>U.S. FinCEN Registered</span>
+    </div>
+    <div class="cert-detail">
+      <h3>U.S. Money Services Business Registration</h3>
+      <p>Catcrs completed its Money Services Business (MSB) registration with the Financial Crimes Enforcement Network (FinCEN) — a bureau of the U.S. Department of the Treasury — on October 21, 2021, and renews registration as required by law. This designation mandates ongoing compliance with the Bank Secrecy Act (BSA) and its anti-money laundering (AML) provisions.</p>
+      <span class="date">Registration Date: October 21, 2021</span>
+    </div>
+  </div>
+
+  <!-- BSA/AML -->
+  <div class="sec-head">
+    <span class="label">01 — BSA / AML Framework</span>
+    <h2>Anti-Money Laundering Obligations</h2>
+    <p>We adhere fully to the Bank Secrecy Act framework for Money Services Businesses, including all customer due diligence and reporting requirements.</p>
+  </div>
+
+  <div class="two-col">
+    <ul class="feature-list">
+      <li>
+        <div class="icon">🪪</div>
+        <div>
+          <strong>Customer Identification (KYC)</strong>
+          <span>All customers are subject to identity verification procedures that are calibrated to transaction size, geography, and risk classification prior to account activation.</span>
+        </div>
+      </li>
+      <li>
+        <div class="icon">📁</div>
+        <div>
+          <strong>Record Retention</strong>
+          <span>All required transactional and identification records are retained in accordance with BSA requirements and reviewed regularly for completeness and accuracy.</span>
+        </div>
+      </li>
+      <li>
+        <div class="icon">🚩</div>
+        <div>
+          <strong>Suspicious Activity Reporting (SAR)</strong>
+          <span>Our compliance systems monitor for and report suspicious transactions to FinCEN in accordance with mandatory SAR filing requirements under BSA regulations.</span>
+        </div>
+      </li>
+    </ul>
+    <ul class="feature-list">
+      <li>
+        <div class="icon">⚖️</div>
+        <div>
+          <strong>Sanctions Screening</strong>
+          <span>We dynamically update OFAC and international sanctions lists. All accounts and transactions are screened against high-risk databases and flagged for review.</span>
+        </div>
+      </li>
+      <li>
+        <div class="icon">🔍</div>
+        <div>
+          <strong>On-Chain Analytics</strong>
+          <span>Integrations with on-chain analytics partners allow us to assess the risk profile of wallet addresses and transaction histories, detecting exposure to illicit activity.</span>
+        </div>
+      </li>
+      <li>
+        <div class="icon">🔄</div>
+        <div>
+          <strong>Periodic Internal Review</strong>
+          <span>Compliance policies and customer risk classifications are reviewed on a recurring basis to incorporate regulatory updates and emerging threat patterns.</span>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- FATF / Travel Rule -->
+  <div class="sec-head">
+    <span class="label">02 — FATF & Travel Rule</span>
+    <h2>Cross-Border Information Transparency</h2>
+    <p>We actively track and implement FATF guidance for Virtual Asset Service Providers (VASPs), with particular focus on the Travel Rule (Recommendation 16) and cross-border transfer transparency.</p>
+  </div>
+
+  <div class="cards">
+    <div class="card">
+      <div class="card-icon">✈️</div>
+      <h3>Travel Rule (R.16) Compliance</h3>
+      <p>FATF Recommendation 16 requires VASPs to transmit originator and beneficiary information for cross-border transfers. We continuously improve our process and system adaptation to meet these standards across jurisdictions.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🌐</div>
+      <h3>VASP-to-VASP Messaging</h3>
+      <p>We are working toward interconnection with peer VASP messaging networks to enable compliant information exchange in cross-border transfers, as required by evolving FATF guidance and local regulators.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🛑</div>
+      <h3>Anti-Scam & Anti-Fraud Tools</h3>
+      <p>Following the FATF 2023–2025 updates on fraud and scam prevention, we have integrated behavioral analytics and anti-scam detection into our withdrawal and onboarding flows.</p>
+    </div>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- Jurisdictional -->
+  <div class="sec-head">
+    <span class="label">03 — Global Jurisdictional Approach</span>
+    <h2>Localized Operations, Conservative Interpretation</h2>
+    <p>We respect and comply with regulatory differences across jurisdictions, applying differential standards for identity verification depth, product availability, and transaction limits by region.</p>
+  </div>
+
+  <div class="highlight-box">
+    <h3>Our Compliance Philosophy</h3>
+    <p>Catcrs operates under the principle of "compliance takes precedence over expansion." Before entering a new market, we assess local VASP regulatory requirements, licensing obligations, and payment partner availability. We partner with local compliance vendors, identity verification providers, and payment processors who are already operating within the relevant regulatory framework. High-risk jurisdictions and sanctioned territories are excluded from service availability by default.</p>
+    <div class="tag-row">
+      <span class="tag">Compliance Before Expansion</span>
+      <span class="tag">Conservative Interpretation</span>
+      <span class="tag">Localized KYC Depth</span>
+      <span class="tag">Differential Product Access</span>
+      <span class="tag">Sanctioned Territory Exclusion</span>
+    </div>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- Compliance Roadmap -->
+  <div class="sec-head">
+    <span class="label">04 — Compliance Roadmap</span>
+    <h2>Next 12–18 Months</h2>
+    <p>Our forward compliance priorities are driven by FATF guideline evolution, jurisdictional licensing progress, and partner network expansion.</p>
+  </div>
+
+  <div class="roadmap-grid">
+    <div class="roadmap-item">
+      <div class="rnum">PRIORITY 01</div>
+      <h4>Travel Rule Network Expansion</h4>
+      <p>Enhance Travel Rule process coverage and connect to additional VASP messaging networks, enabling compliant cross-border transfer information sharing with peer exchanges.</p>
+    </div>
+    <div class="roadmap-item">
+      <div class="rnum">PRIORITY 02</div>
+      <h4>Multi-Jurisdiction KYC Partners</h4>
+      <p>Integrate with additional regional KYC and payment partners, expanding compliant access in phases while maintaining strict onboarding standards in each jurisdiction.</p>
+    </div>
+    <div class="roadmap-item">
+      <div class="rnum">PRIORITY 03</div>
+      <h4>Annual Penetration Test Publication</h4>
+      <p>Publish summaries of annual third-party penetration tests and security assessments, providing external verification of our security posture alongside PoR disclosures.</p>
+    </div>
+    <div class="roadmap-item">
+      <div class="rnum">PRIORITY 04</div>
+      <h4>Regularized PoR Disclosure</h4>
+      <p>Transition from internal PoR trials to scheduled, recurring public disclosures with standardized methodology documentation and third-party review verification.</p>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">CAT<span>CRS</span></div>
+    <p>© 2025 Catcrs. Informational purposes only.</p>
+    <a href="mailto:support@catcrs.com">support@catcrs.com</a>
+  </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FAQ — Catcrs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Sora:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#080c14;--bg2:#0d1220;--border:rgba(99,179,237,.15);--accent:#3b9eff;--accent2:#00e5c8;--accent3:#7c5bff;--text:#e2ecff;--muted:#7b91b0;--card:rgba(255,255,255,.03);--glow:rgba(59,158,255,.12);}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;overflow-x:hidden;}
+  .top-banner{background:linear-gradient(90deg,var(--accent3),var(--accent));text-align:center;padding:10px 20px;font-family:'Space Mono',monospace;font-size:13px;position:sticky;top:0;z-index:1000;}
+  .top-banner a{color:#fff;text-decoration:none;font-weight:700;border-bottom:1px solid rgba(255,255,255,.5);}
+  nav{position:sticky;top:40px;z-index:999;background:rgba(8,12,20,.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:64px;}
+  .nav-logo{font-family:'Space Mono',monospace;font-size:20px;font-weight:700;color:var(--accent);text-decoration:none;letter-spacing:.08em;}
+  .nav-logo span{color:var(--accent2);}
+  .nav-links{display:flex;gap:6px;}
+  .nav-links a{color:var(--muted);text-decoration:none;font-size:13.5px;padding:8px 16px;border-radius:8px;transition:all .2s;font-weight:600;}
+  .nav-links a:hover,.nav-links a.active{color:var(--accent);background:var(--glow);}
+
+  .page-hero{padding:80px 40px 60px;max-width:1140px;margin:0 auto;}
+  .page-tag{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent2);margin-bottom:16px;display:block;}
+  .page-hero h1{font-size:clamp(32px,5vw,58px);font-weight:700;letter-spacing:-.02em;margin-bottom:16px;}
+  .page-hero h1 .grad{background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+  .page-hero p{font-size:17px;color:var(--muted);max-width:640px;line-height:1.8;}
+
+  .content{max-width:840px;margin:0 auto;padding:0 40px 100px;}
+  .section-divider{border:none;border-top:1px solid var(--border);margin:56px 0;}
+
+  .faq-section{margin-bottom:56px;}
+  .faq-section-label{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.12em;color:var(--accent);text-transform:uppercase;margin-bottom:24px;display:flex;align-items:center;gap:12px;}
+  .faq-section-label::after{content:'';flex:1;height:1px;background:var(--border);}
+
+  .faq-item{border:1px solid var(--border);border-radius:12px;margin-bottom:12px;overflow:hidden;transition:border-color .2s;}
+  .faq-item:hover{border-color:rgba(59,158,255,.35);}
+  .faq-q{width:100%;background:none;border:none;text-align:left;padding:20px 24px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;}
+  .faq-q-text{font-size:15.5px;font-weight:600;color:var(--text);font-family:'Sora',sans-serif;}
+  .faq-chevron{width:20px;height:20px;border-radius:50%;background:var(--glow);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform .25s,background .2s;}
+  .faq-chevron svg{width:10px;height:10px;fill:none;stroke:var(--accent);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+  .faq-item.open .faq-chevron{transform:rotate(180deg);background:var(--glow);}
+  .faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease,padding .3s ease;}
+  .faq-a-inner{padding:0 24px 20px;font-size:14.5px;color:var(--muted);line-height:1.8;border-top:1px solid var(--border);padding-top:16px;}
+  .faq-item.open .faq-a{max-height:600px;}
+
+  .contact-box{background:linear-gradient(135deg,rgba(59,158,255,.07),rgba(124,91,255,.07));border:1px solid rgba(59,158,255,.2);border-radius:20px;padding:48px;text-align:center;margin-top:64px;}
+  .contact-box h2{font-size:28px;font-weight:700;margin-bottom:12px;}
+  .contact-box p{font-size:15px;color:var(--muted);margin-bottom:28px;max-width:400px;margin-left:auto;margin-right:auto;}
+  .contact-box a.btn{display:inline-block;background:linear-gradient(135deg,var(--accent),var(--accent3));color:#fff;text-decoration:none;padding:14px 32px;border-radius:10px;font-weight:600;font-size:15px;margin:0 8px 12px;}
+  .contact-box a.btn-ghost{display:inline-block;border:1px solid var(--border);color:var(--text);text-decoration:none;padding:14px 32px;border-radius:10px;font-weight:600;font-size:15px;margin:0 8px 12px;transition:all .2s;}
+  .contact-box a.btn-ghost:hover{border-color:var(--accent);color:var(--accent);}
+
+  footer{background:var(--bg2);border-top:1px solid var(--border);padding:40px;}
+  .footer-inner{max-width:1140px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;}
+  .footer-logo{font-family:'Space Mono',monospace;font-size:18px;font-weight:700;color:var(--accent);}
+  .footer-logo span{color:var(--accent2);}
+  .footer-inner p{font-size:13px;color:var(--muted);}
+  .footer-inner a{color:var(--accent);text-decoration:none;font-size:13px;font-family:'Space Mono',monospace;}
+  @media(max-width:768px){
+    nav{padding:0 16px;}.nav-links a{padding:6px 10px;font-size:12px;}
+    .page-hero,.content{padding-left:20px;padding-right:20px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="top-banner">🌐 Official Exchange &nbsp;→&nbsp; <a href="https://catcrs.com" target="_blank">catcrs.com</a></div>
+
+<nav>
+  <a href="index.html" class="nav-logo">CAT<span>CRS</span></a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="security.html">Security</a>
+    <a href="compliance.html">Compliance</a>
+    <a href="products.html">Products</a>
+    <a href="about.html">About</a>
+    <a href="faq.html" class="active">FAQ</a>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <span class="page-tag">Frequently Asked Questions</span>
+  <h1>Clear Answers, <span class="grad">No Vague Claims</span></h1>
+  <p>We communicate in facts, context, boundaries, and follow-ups. Every answer here is designed to be verifiable — not reassuring without substance.</p>
+</div>
+
+<div class="content">
+
+  <!-- General -->
+  <div class="faq-section">
+    <div class="faq-section-label">General Platform</div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggle(this)">
+        <span class="faq-q-text">What is Catcrs and where is it registered?</span>
+        <span class="faq-chevron"><svg viewBox="0 0 12 12"><polyline points="2,4 6,8 10,4"/></svg></span>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner">Catcrs is a global crypto asset trading platform. The project was initiated in October 2020, and the company completed U.S. Money Services Business (MSB) registration with the Financial Crimes Enforcement Network (FinCEN) — a bureau of the U.S. Department of the Treasury — on October 21, 2021. Our official exchange is accessible at catcrs.com.</div></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggle(this)">
+        <span class="faq-q-text">Is Catcrs regulated?</span>
+        <span class="faq-chevron"><svg viewBox="0 0 12 12"><polyline points="2,4 6,8 10,4"/></svg></span>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner">Catcrs is registered as a Money Services Business (MSB) with FinCEN in the United States, which requires ongoing compliance with the Bank Secrecy Act (BSA) including AML obligations, suspicious activity reporting, customer identification, and record retention. We also follow FATF guidance for Virtual Asset Service Providers (VASPs). In each market we operate, we apply localized compliance requirements before expanding — compliance takes precedence over growth.</div></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggle(this)">
+        <span class="faq-q-text">Which countries can use Catcrs?</span>
+        <span class="faq-chevron"><svg viewBox="0 0 12 12"><polyline points="2,4 6,8 10,4"/></svg></span>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner">Availability varies by jurisdiction. We follow a "compliance before expansion" policy, meaning we establish local regulatory compliance, KYC verification partners, and payment infrastructure before enabling service in a new region. Certain products (such as derivatives) are only available in jurisdictions where the applicable regulatory framework permits them. Sanctioned territories are excluded from service. If you are unsure whether your jurisdiction is supported, please contact support@catcrs.com.</div></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggle(this)">
+        <span class="faq-q-text">What trading products does Catcrs offer?</span>
+        <span class="faq-chevron"><svg viewBox="0 0 12 12"><polyline points="2,4 6,8 10,4"/></svg></span>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner">Catcrs currently offers spot trading and C2C (peer-to-peer) exchange for individual users. Futures and options channels are being progressively opened in jurisdictions where compliance frameworks are established — availability is determined by regulatory status, not market demand. For institutional clients, we offer market making support, brokerage and custody solutions, batch settlement tools, and customized API access.</div></div>
+    </div>
+  </div>
+
+  <!-- Security -->
+  <div class="faq-section">
+    <div class="faq-section-label">Security</div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggle(this)">
+        <span class="faq-q-text">How does Catcrs protect user assets?</span>
+        <span class="faq-chevron"><svg viewBox="0 0 12 12"><polyline points="2,4 6,8 10,4"/></svg></span>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner">Assets are protected through a layered architecture: hot/cold wallet separation (the majority of assets are held in cold storage), Hardware Security Module (HSM) key custody, multi-signature and threshold signing schemes, and mandatory 2FA for all accounts. Large withdrawals trigger time-locked delays and behavioral scoring. Abnormal login or withdrawal behavior triggers interception and secondary confirmation before proceeding.</div></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggle(this)">
+        <span class="faq-q-text">Is two-factor authentication (2FA) required?</span>
+        <span class="faq-chevron"><svg viewBox="0 0 12 12"><polyline points="2,4 6,8 10,4"/></svg></span>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner">Yes. Two-factor authentication is mandatory for all accounts on Catcrs. It cannot be disabled after being set up. This is a non-negotiable default security configuration. We also enforce device trust management — unrecognized devices trigger verification flows and login alerts, even if the correct password is provided.</div></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggle(this)">
+        <span class="faq-q-text">What is Proof-of-Reserves (PoR) and does Catcrs publish it?</span>
+        <span class="faq-chevron"><svg viewBox="0 0 12 12"><polyline points="2,4 6,8 10,4"/></svg></span>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner">Proof-of-Reserves (PoR) is a method for exchanges to demonstrate that on-chain assets equal or exceed user balances at a given point in time. Our current PoR approach is based on Merkle tree snapshots and third-party method reviews. In October 2025, we completed an internal PoR trial and established our disclosure baseline. Regularized public PoR disclosures are planned as part of our next-phase roadmap. We note clearly that PoR is a snapshot tool — it is not a substitute for a full financial audit, and we do not present it as such.</div></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggle(this)">
+        <span class="faq-q-text">What happens if there is a security incident?</span>
+        <span class="faq-chevron"><svg viewBox="0 0 12 12"><polyline points="2,4 6,8 10,4"/></svg></span>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner">In the event of a security incident, we follow a standardized four-part communication model: Facts (what happened), Context (why it happened), Boundaries (scope of impact), and Follow-up (what we are doing and when to expect updates). Key events and timelines are published on our status page in a standardized format. We conduct regular disaster recovery drills and rollback exercises so that our response capabilities are well-practiced, not theoretical.</div></div>
+    </div>
+  </div>
+
+  <!-- Compliance -->
+  <div class="faq-section">
+    <div class="faq-section-label">Compliance & KYC</div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggle(this)">
+        <span class="faq-q-text">Why does Catcrs require identity verification (KYC)?</span>
+        <span class="faq-chevron"><svg viewBox="0 0 12 12"><polyline points="2,4 6,8 10,4"/></svg></span>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner">KYC (Know Your Customer) is a legal requirement for all Money Services Businesses under the U.S. Bank Secrecy Act and for VASPs under FATF international standards. Identity verification allows us to prevent money laundering, terrorist financing, and fraud, and enables us to report suspicious activity to authorities as required by law. The depth of verification required varies by jurisdiction and transaction volume.</div></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggle(this)">
+        <span class="faq-q-text">How does Catcrs handle sanctions screening?</span>
+        <span class="faq-chevron"><svg viewBox="0 0 12 12"><polyline points="2,4 6,8 10,4"/></svg></span>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner">We dynamically update OFAC and international sanctions lists through integrations with compliance partners. All accounts and transactions are screened against these lists and high-risk databases. We also maintain on-chain analytics integrations to assess the risk profile of wallet addresses and transaction histories, flagging exposure to illicit activity for compliance review.</div></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggle(this)">
+        <span class="faq-q-text">What is the FATF Travel Rule and does Catcrs comply?</span>
+        <span class="faq-chevron"><svg viewBox="0 0 12 12"><polyline points="2,4 6,8 10,4"/></svg></span>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner">The FATF Travel Rule (Recommendation 16) requires Virtual Asset Service Providers to transmit originator and beneficiary information alongside cross-border crypto transfers above certain thresholds. We are continuously improving our process and system adaptation to meet Travel Rule requirements across jurisdictions, and are working toward interconnection with peer VASP messaging networks for compliant information exchange.</div></div>
+    </div>
+  </div>
+
+  <!-- Accounts -->
+  <div class="faq-section">
+    <div class="faq-section-label">Accounts & Fees</div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggle(this)">
+        <span class="faq-q-text">How does Catcrs charge fees?</span>
+        <span class="faq-chevron"><svg viewBox="0 0 12 12"><polyline points="2,4 6,8 10,4"/></svg></span>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner">Catcrs uses a tiered maker/taker fee structure based on trading volume. The full fee schedule is published on the official exchange at catcrs.com and is explained with concrete examples in a format that is short, comparable, and free of hidden terms. For market makers and institutional clients, personalized fee arrangements are available and are executed on the basis of compliance and fairness — any customized terms are documented and auditable.</div></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggle(this)">
+        <span class="faq-q-text">Why is my large withdrawal delayed?</span>
+        <span class="faq-chevron"><svg viewBox="0 0 12 12"><polyline points="2,4 6,8 10,4"/></svg></span>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner">Large withdrawal delays are a deliberate security feature, not a bug. Withdrawals above configured thresholds are subject to time-locked delays linked to behavioral scoring. This provides a recovery window in the event your account has been compromised without your knowledge. Secondary confirmation may also be required. If you believe a delay is in error, contact our support team at support@catcrs.com.</div></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggle(this)">
+        <span class="faq-q-text">How do I identify official Catcrs communications?</span>
+        <span class="faq-chevron"><svg viewBox="0 0 12 12"><polyline points="2,4 6,8 10,4"/></svg></span>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner">Official Catcrs communications come from domains ending in @catcrs.com. Our support team can be reached at support@catcrs.com. We will never ask for your password, private keys, or 2FA codes by email, phone, or social media. We will never contact you first to offer returns, investment opportunities, or require urgent action. If someone claims to be from Catcrs and asks for any of the above, you are likely being targeted by a scam. Report suspected fraud to support@catcrs.com immediately.</div></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggle(this)">
+        <span class="faq-q-text">Does Catcrs guarantee investment returns?</span>
+        <span class="faq-chevron"><svg viewBox="0 0 12 12"><polyline points="2,4 6,8 10,4"/></svg></span>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner">No. Digital asset prices are highly volatile and may result in partial or total loss of principal. Catcrs does not guarantee any investment returns and explicitly refuses to make promises of unverifiable returns. Any statements regarding performance, availability, or timelines in our materials are goals, not guarantees. If any individual or entity claims to guarantee returns "through Catcrs," that is a scam — not affiliated with us in any way.</div></div>
+    </div>
+  </div>
+
+  <div class="contact-box">
+    <h2>Still Have Questions?</h2>
+    <p>Our support team is available to assist with account, compliance, and technical inquiries.</p>
+    <a href="mailto:support@catcrs.com" class="btn">Email Support</a>
+    <a href="https://catcrs.com" class="btn-ghost" target="_blank">Visit Exchange</a>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">CAT<span>CRS</span></div>
+    <p>© 2025 Catcrs. Informational purposes only.</p>
+    <a href="mailto:support@catcrs.com">support@catcrs.com</a>
+  </div>
+</footer>
+
+<script>
+function toggle(btn) {
+  const item = btn.closest('.faq-item');
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+</script>
+</body>
+</html>
