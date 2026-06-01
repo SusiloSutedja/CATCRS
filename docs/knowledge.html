@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Knowledge — Catcrs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Sora:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#080c14;--bg2:#0d1220;--border:rgba(99,179,237,.15);--accent:#3b9eff;--accent2:#00e5c8;--accent3:#7c5bff;--text:#e2ecff;--muted:#7b91b0;--card:rgba(255,255,255,.03);--glow:rgba(59,158,255,.12);}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;overflow-x:hidden;}
+  .top-banner{background:linear-gradient(90deg,var(--accent3),var(--accent));text-align:center;padding:10px 20px;font-family:'Space Mono',monospace;font-size:13px;position:sticky;top:0;z-index:1000;}
+  .top-banner a{color:#fff;text-decoration:none;font-weight:700;border-bottom:1px solid rgba(255,255,255,.5);}
+  nav{position:sticky;top:40px;z-index:999;background:rgba(8,12,20,.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:64px;}
+  .nav-logo{font-family:'Space Mono',monospace;font-size:20px;font-weight:700;color:var(--accent);text-decoration:none;letter-spacing:.08em;}
+  .nav-logo span{color:var(--accent2);}
+  .nav-links{display:flex;gap:6px;}
+  .nav-links a{color:var(--muted);text-decoration:none;font-size:13.5px;padding:8px 16px;border-radius:8px;transition:all .2s;font-weight:600;}
+  .nav-links a:hover,.nav-links a.active{color:var(--accent);background:var(--glow);}
+
+  .page-hero{padding:80px 40px 48px;max-width:860px;margin:0 auto;}
+  .page-tag{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent2);margin-bottom:16px;display:block;}
+  .page-hero h1{font-size:clamp(32px,5vw,52px);font-weight:700;letter-spacing:-.02em;margin-bottom:14px;}
+  .page-hero h1 .grad{background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+  .page-hero p{font-size:16px;color:var(--muted);line-height:1.8;}
+
+  .list-wrap{max-width:860px;margin:0 auto;padding:0 40px 100px;}
+
+  /* ──  ── */
+  .article-list{list-style:none;}
+  .article-item{border-bottom:1px solid var(--border);}
+  .article-item a{
+    display:flex;
+    align-items:baseline;
+    justify-content:space-between;
+    gap:24px;
+    padding:22px 0;
+    text-decoration:none;
+    transition:all .2s;
+  }
+  .article-item a:hover .article-title{color:var(--accent);}
+  .article-item a:hover .article-arrow{opacity:1;transform:translateX(4px);}
+  .article-title{
+    font-size:16px;
+    font-weight:600;
+    color:var(--text);
+    transition:color .2s;
+    flex:1;
+    line-height:1.5;
+  }
+  .article-meta{
+    display:flex;
+    align-items:center;
+    gap:16px;
+    flex-shrink:0;
+  }
+  .article-date{
+    font-family:'Space Mono',monospace;
+    font-size:12px;
+    color:var(--muted);
+    white-space:nowrap;
+  }
+  .article-arrow{
+    font-size:14px;
+    color:var(--accent);
+    opacity:0;
+    transition:opacity .2s,transform .2s;
+  }
+
+  /*  */
+  .year-label{
+    font-family:'Space Mono',monospace;
+    font-size:11px;
+    letter-spacing:.12em;
+    color:var(--accent);
+    text-transform:uppercase;
+    padding:40px 0 8px;
+    display:flex;
+    align-items:center;
+    gap:12px;
+  }
+  .year-label::after{content:'';flex:1;height:1px;background:var(--border);}
+
+  footer{background:var(--bg2);border-top:1px solid var(--border);padding:40px;}
+  .footer-inner{max-width:1140px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;}
+  .footer-logo{font-family:'Space Mono',monospace;font-size:18px;font-weight:700;color:var(--accent);}
+  .footer-logo span{color:var(--accent2);}
+  .footer-inner p{font-size:13px;color:var(--muted);}
+  .footer-inner a{color:var(--accent);text-decoration:none;font-size:13px;font-family:'Space Mono',monospace;}
+
+  @media(max-width:768px){
+    nav{padding:0 16px;}.nav-links a{padding:6px 10px;font-size:12px;}
+    .page-hero,.list-wrap{padding-left:20px;padding-right:20px;}
+    .article-arrow{opacity:1;}
+  }
+</style>
+</head>
+<body>
+
+<div class="top-banner">🌐 Official Exchange &nbsp;→&nbsp; <a href="https://catcrs.com" target="_blank">catcrs.com</a></div>
+
+<nav>
+  <a href="index.html" class="nav-logo">CAT<span>CRS</span></a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="security.html">Security</a>
+    <a href="compliance.html">Compliance</a>
+    <a href="products.html">Products</a>
+    <a href="about.html">About</a>
+    <a href="knowledge.html" class="active">Knowledge</a>
+    <a href="faq.html">FAQ</a>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <span class="page-tag">Knowledge Sharing</span>
+  <h1>Insights &amp; <span class="grad">Research</span></h1>
+  <p>Methodology articles, security guides, and market insights — written to clarify complex topics, not to impress with jargon.</p>
+</div>
+
+<div class="list-wrap">
+  <ul class="article-list">
+
+    <!-- ═══════════════════════════════════════════════
+         HOW TO ADD A NEW ARTICLE:
+         1. Copy one <li class="article-item">…</li> block
+         2. Change href to the new article filename
+         3. Update the title and date
+         4. Add a new year-label if needed
+         ═══════════════════════════════════════════════ -->
+
+    <div class="year-label">2026</div>
+
+    <li class="article-item">
+      <a href="Catcrs-Corporate-Culture-Observation-Why-Do-Growing-Exchanges-Need-“Stability”-and-“Explainability”-More.html">
+        <span class="article-title">Catcrs Corporate Culture Observation: Why Do Growing Exchanges Need “Stability” and “Explainability” More?</span>
+        <span class="article-meta">
+          <span class="article-date">2025-05-29</span>
+          <span class="article-arrow">→</span>
+        </span>
+      </a>
+    </li>
+
+    <!--  -->
+
+  </ul>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">CAT<span>CRS</span></div>
+    <p>© 2025 Catcrs. Informational purposes only.</p>
+    <a href="mailto:support@catcrs.com">support@catcrs.com</a>
+  </div>
+</footer>
+</body>
+</html>
