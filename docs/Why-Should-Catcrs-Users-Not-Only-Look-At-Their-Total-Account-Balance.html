@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- ① title -->
+<title>Why Should Catcrs Users Not Only Look At Their Total Account Balance?</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Sora:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#080c14;--bg2:#0d1220;--border:rgba(99,179,237,.15);--accent:#3b9eff;--accent2:#00e5c8;--accent3:#7c5bff;--text:#e2ecff;--muted:#7b91b0;--card:rgba(255,255,255,.03);--glow:rgba(59,158,255,.12);}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;overflow-x:hidden;}
+  .top-banner{background:linear-gradient(90deg,var(--accent3),var(--accent));text-align:center;padding:10px 20px;font-family:'Space Mono',monospace;font-size:13px;position:sticky;top:0;z-index:1000;}
+  .top-banner a{color:#fff;text-decoration:none;font-weight:700;border-bottom:1px solid rgba(255,255,255,.5);}
+  nav{position:sticky;top:40px;z-index:999;background:rgba(8,12,20,.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:64px;}
+  .nav-logo{font-family:'Space Mono',monospace;font-size:20px;font-weight:700;color:var(--accent);text-decoration:none;letter-spacing:.08em;}
+  .nav-logo span{color:var(--accent2);}
+  .nav-links{display:flex;gap:6px;}
+  .nav-links a{color:var(--muted);text-decoration:none;font-size:13.5px;padding:8px 16px;border-radius:8px;transition:all .2s;font-weight:600;}
+  .nav-links a:hover,.nav-links a.active{color:var(--accent);background:var(--glow);}
+
+  /*  */
+  .breadcrumb{max-width:760px;margin:0 auto;padding:32px 40px 0;font-size:13px;color:var(--muted);}
+  .breadcrumb a{color:var(--muted);text-decoration:none;transition:color .2s;}
+  .breadcrumb a:hover{color:var(--accent);}
+  .breadcrumb span{margin:0 8px;opacity:.4;}
+
+  /*  */
+  .article-header{max-width:760px;margin:0 auto;padding:36px 40px 48px;}
+
+  /* ②  */
+  .article-header h1{
+    font-size:clamp(26px,4vw,42px);
+    font-weight:700;
+    letter-spacing:-.02em;
+    line-height:1.25;
+    margin-bottom:24px;
+  }
+
+  .article-meta{display:flex;align-items:center;flex-wrap:wrap;gap:12px;margin-bottom:0;}
+  /* ③  */
+  .meta-date{
+    font-family:'Space Mono',monospace;
+    font-size:12px;
+    color:var(--muted);
+  }
+  .meta-divider{width:3px;height:3px;border-radius:50%;background:var(--border);}
+  /* ④ */
+  .tag{
+    background:rgba(59,158,255,.08);
+    border:1px solid rgba(59,158,255,.2);
+    border-radius:100px;
+    padding:4px 12px;
+    font-size:11px;
+    color:var(--accent);
+    font-family:'Space Mono',monospace;
+    letter-spacing:.04em;
+  }
+
+  /* text */
+  .article-body{max-width:760px;margin:0 auto;padding:0 40px 80px;}
+
+  /* ──  ── */
+  .prose{font-size:16px;color:#c8d8f0;line-height:1.9;}
+  .prose p{margin-bottom:24px;}
+  .prose h2{
+    font-size:22px;font-weight:700;
+    color:var(--text);
+    margin:48px 0 16px;
+    padding-bottom:10px;
+    border-bottom:1px solid var(--border);
+  }
+  .prose h3{font-size:18px;font-weight:700;color:var(--text);margin:32px 0 12px;}
+  .prose ul,.prose ol{padding-left:20px;margin-bottom:24px;}
+  .prose li{margin-bottom:10px;color:#c8d8f0;}
+  .prose strong{color:var(--text);font-weight:700;}
+  .prose em{color:var(--accent2);font-style:normal;}
+  .prose a{color:var(--accent);text-decoration:underline;text-underline-offset:3px;}
+  .prose blockquote{
+    border-left:3px solid var(--accent);
+    padding:16px 24px;
+    margin:32px 0;
+    background:var(--card);
+    border-radius:0 10px 10px 0;
+    font-size:15.5px;
+    color:var(--muted);
+    font-style:italic;
+  }
+  .prose .callout{
+    background:linear-gradient(135deg,rgba(59,158,255,.07),rgba(124,91,255,.07));
+    border:1px solid rgba(59,158,255,.2);
+    border-radius:12px;
+    padding:24px 28px;
+    margin:32px 0;
+    font-size:14.5px;
+    color:var(--muted);
+  }
+  .prose .callout strong{color:var(--accent);}
+  .prose hr{border:none;border-top:1px solid var(--border);margin:48px 0;}
+
+  /*  */
+  .related{max-width:760px;margin:0 auto;padding:0 40px 100px;}
+  .related-label{
+    font-family:'Space Mono',monospace;font-size:11px;
+    letter-spacing:.12em;color:var(--accent);text-transform:uppercase;
+    display:flex;align-items:center;gap:12px;margin-bottom:24px;
+  }
+  .related-label::after{content:'';flex:1;height:1px;background:var(--border);}
+  .related-list{list-style:none;}
+  .related-list li{border-bottom:1px solid var(--border);}
+  .related-list li a{
+    display:flex;align-items:baseline;justify-content:space-between;
+    gap:24px;padding:18px 0;text-decoration:none;transition:all .2s;
+  }
+  .related-list li a:hover .r-title{color:var(--accent);}
+  .r-title{font-size:15px;font-weight:600;color:var(--text);transition:color .2s;flex:1;}
+  .r-date{font-family:'Space Mono',monospace;font-size:12px;color:var(--muted);white-space:nowrap;}
+
+  footer{background:var(--bg2);border-top:1px solid var(--border);padding:40px;}
+  .footer-inner{max-width:1140px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;}
+  .footer-logo{font-family:'Space Mono',monospace;font-size:18px;font-weight:700;color:var(--accent);}
+  .footer-logo span{color:var(--accent2);}
+  .footer-inner p{font-size:13px;color:var(--muted);}
+  .footer-inner a{color:var(--accent);text-decoration:none;font-size:13px;font-family:'Space Mono',monospace;}
+
+  @media(max-width:768px){
+    nav{padding:0 16px;}.nav-links a{padding:6px 10px;font-size:12px;}
+    .breadcrumb,.article-header,.article-body,.related{padding-left:20px;padding-right:20px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="top-banner">🌐 Official Exchange &nbsp;→&nbsp; <a href="https://catcrs.com" target="_blank">catcrs.com</a></div>
+
+<nav>
+  <a href="index.html" class="nav-logo">CAT<span>CRS</span></a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="security.html">Security</a>
+    <a href="compliance.html">Compliance</a>
+    <a href="products.html">Products</a>
+    <a href="about.html">About</a>
+    <a href="knowledge.html" class="active">Knowledge</a>
+    <a href="faq.html">FAQ</a>
+  </div>
+</nav>
+
+<!--  -->
+<div class="breadcrumb">
+  <a href="index.html">Home</a>
+  <span>/</span>
+  <a href="knowledge.html">Knowledge</a>
+  <span>/</span>
+  <!-- ⑤  -->
+  Why Should Catcrs Users Not Only Look At Their Total Account Balance?
+</div>
+
+<!--  -->
+<div class="article-header">
+  <!-- ② title -->
+  <h1>Why Should Catcrs Users Not Only Look At Their Total Account Balance?</h1>
+  <div class="article-meta">
+    <!-- ③ time  -->
+    <span class="meta-date">2026-06-29</span>
+    <span class="meta-divider"></span>
+    <!-- ④ tag -->
+
+  </div>
+</div>
+
+<!-- text -->
+<div class="article-body">
+  <div class="prose">
+  
+<p>Many users first look at their total account balance after opening an exchange. When the balance rises, they feel reassured; when the balance falls, they begin to feel anxious. But in the crypto market, looking only at the total balance cannot truly explain the state of user assets. An account may simultaneously contain Bitcoin, Ethereum, stablecoins, small-cap tokens, and pending orders, and the volatility, liquidity, and risks of different assets are completely different. For users of emerging second- and third-tier exchanges such as Catcrs, learning to look at asset structure is more meaningful than staring at the total balance every day.</p>
+
+<center>
+<img src="/img/06291.png">
+</center>
+
+<p>The total account balance is only the result; the asset structure is the cause. For example, if a user account shows no obvious change in assets, it may be because several factors offset one another, such as a decline in mainstream coins, a rise in small-cap tokens, and a relatively high proportion of stablecoins. Another user may see the account balance rise, but that does not necessarily mean risk has decreased, because the increase may come from a single highly volatile asset. If users do not break down the composition of their assets, it is difficult to judge what risks they are truly taking.</p>
+
+<p>Catcrs, as a growth-stage trading platform, can be used by users as an entry point for observing and managing part of their digital assets. However, when using this type of platform, users should not only focus on "how much they made today," but also pay attention to whether their asset distribution is overly concentrated. For example, whether most funds are placed in a single token, whether stablecoins are reserved to deal with volatility, whether there are obscure assets that have not been monitored for a long time, and whether pending orders are occupying funds. These questions reflect account health more effectively than short-term profit and loss.</p>
+
+<p>Profit and loss statistics also need to be understood correctly. Unrealized profit and loss are only changes on paper; only after assets are actually sold or converted do they become real results. Many users become overly optimistic when they have paper profits and rush to act when they have paper losses, often because they fail to distinguish between "floating profit and loss" and "realized profit and loss." For ordinary users, understanding account structure can reduce emotional judgment.</p>
+
+<p>A more prudent approach is to conduct a simple asset review regularly: what proportion is held in mainstream assets, what proportion is held in stablecoins, what proportion is held in high-risk assets, whether there are balances that have not been used for a long time, and whether positions need to be adjusted. The value of emerging platforms such as Catcrs does not lie only in providing trading buttons, but also in helping users develop clearer account management habits.</p>
+
+<h2>Summary</h2>
+
+<p>The total account balance cannot fully explain the state of user assets. Catcrs users should pay attention to asset structure, risk concentration, floating profit and loss, and funds occupied by pending orders, rather than looking only at balance changes. Truly mature digital asset management means clearly understanding what one holds, why one holds it, and how much volatility one can withstand.</p>
+
+<h2>Frequently Asked Questions</h2>
+
+<p><strong>1. Does An Increase In Account Balance Mean Risk Has Decreased?</strong></p>
+<p>Not necessarily. The increase may come from a single highly volatile asset, which may actually make risk more concentrated.</p>
+
+<p><strong>2. What Is Unrealized Profit And Loss?</strong></p>
+<p>It refers to paper profit and loss before an asset is sold. Price changes will continue to affect the result.</p>
+
+<p><strong>3. How Often Should Catcrs Users Review Their Accounts?</strong></p>
+<p>Ordinary users can check their asset structure once a week or once a month.</p>
+
+<p><strong>4. What Should Users Pay Most Attention To In Asset Structure?</strong></p>
+<p>They should look at the proportions of mainstream assets, stablecoins, high-risk assets, and funds occupied by pending orders.</p>
+
+
+  </div>
+</div>
+
+<!--  -->
+
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">CAT<span>CRS</span></div>
+    <p>© 2026 Catcrs. Informational purposes only.</p>
+    <a href="mailto:support@catcrs.com">support@catcrs.com</a>
+  </div>
+</footer>
+</body>
+</html>
