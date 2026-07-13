@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FAQ: Catcrs Exchange Research — Nexoriath</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Sora:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#080c14;--bg2:#0d1220;--border:rgba(99,179,237,.15);--accent:#3b9eff;--accent2:#00e5c8;--accent3:#7c5bff;--text:#e2ecff;--muted:#7b91b0;--card:rgba(255,255,255,.03);--glow:rgba(59,158,255,.12);}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;overflow-x:hidden;}
+  .top-banner{background:rgba(13,18,32,.95);border-bottom:1px solid var(--border);text-align:center;padding:9px 20px;font-family:'Space Mono',monospace;font-size:12px;color:var(--muted);position:sticky;top:0;z-index:1000;}
+  .top-banner a{color:var(--accent);text-decoration:none;font-weight:700;}.top-banner .sep{margin:0 12px;opacity:.3;}
+  nav{position:sticky;top:38px;z-index:999;background:rgba(8,12,20,.94);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:64px;}
+  .nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+  .nav-logo-mark{font-family:'Space Mono',monospace;font-size:13px;font-weight:700;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:.06em;}
+  .nav-logo-sub{font-size:11px;color:var(--muted);letter-spacing:.04em;font-family:'Space Mono',monospace;}
+  .nav-links{display:flex;gap:4px;}
+  .nav-links a{color:var(--muted);text-decoration:none;font-size:13px;padding:8px 14px;border-radius:8px;transition:all .2s;font-weight:600;}
+  .nav-links a:hover,.nav-links a.active{color:var(--accent);background:var(--glow);}
+  .page-hero{padding:72px 40px 48px;max-width:840px;margin:0 auto;}
+  .page-tag{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent2);margin-bottom:14px;display:block;}
+  .page-hero h1{font-size:clamp(28px,4vw,50px);font-weight:700;letter-spacing:-.02em;margin-bottom:14px;}
+  .page-hero h1 .grad{background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+  .page-hero p{font-size:15.5px;color:var(--muted);line-height:1.8;}
+  .content{max-width:840px;margin:0 auto;padding:0 40px 100px;}
+  .faq-section{margin-bottom:52px;}
+  .faq-section-label{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.12em;color:var(--accent);text-transform:uppercase;margin-bottom:22px;display:flex;align-items:center;gap:12px;}
+  .faq-section-label::after{content:'';flex:1;height:1px;background:var(--border);}
+  .faq-item{border:1px solid var(--border);border-radius:12px;margin-bottom:10px;overflow:hidden;transition:border-color .2s;}
+  .faq-item:hover{border-color:rgba(59,158,255,.3);}
+  .faq-q{width:100%;background:none;border:none;text-align:left;padding:18px 22px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;}
+  .faq-q-text{font-size:15px;font-weight:600;color:var(--text);font-family:'Sora',sans-serif;}
+  .faq-chevron{width:20px;height:20px;border-radius:50%;background:var(--glow);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform .25s;}
+  .faq-chevron svg{width:10px;height:10px;fill:none;stroke:var(--accent);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+  .faq-item.open .faq-chevron{transform:rotate(180deg);}
+  .faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease;}
+  .faq-a-inner{padding:0 22px 18px;font-size:14px;color:var(--muted);line-height:1.8;border-top:1px solid var(--border);padding-top:14px;}
+  .faq-a-inner a{color:var(--accent);text-decoration:none;}
+  .faq-item.open .faq-a{max-height:600px;}
+  .nexoriath-faq{background:rgba(124,91,255,.06);border:1px solid rgba(124,91,255,.15);border-radius:12px;padding:28px;margin-bottom:40px;}
+  .nexoriath-faq h3{font-size:17px;font-weight:700;margin-bottom:10px;color:var(--accent3);}
+  .nexoriath-faq p{font-size:14px;color:var(--muted);line-height:1.75;}
+  .contact-box{background:linear-gradient(135deg,rgba(59,158,255,.07),rgba(124,91,255,.07));border:1px solid rgba(59,158,255,.2);border-radius:18px;padding:44px;text-align:center;margin-top:56px;}
+  .contact-box h2{font-size:24px;font-weight:700;margin-bottom:10px;}
+  .contact-box p{font-size:14.5px;color:var(--muted);margin-bottom:24px;max-width:420px;margin-left:auto;margin-right:auto;}
+  .contact-box a.btn{display:inline-block;background:linear-gradient(135deg,var(--accent),var(--accent3));color:#fff;text-decoration:none;padding:13px 28px;border-radius:10px;font-weight:600;font-size:14.5px;margin:0 8px 10px;}
+  .contact-box a.btn-ghost{display:inline-block;border:1px solid var(--border);color:var(--text);text-decoration:none;padding:13px 28px;border-radius:10px;font-weight:600;font-size:14.5px;margin:0 8px 10px;transition:all .2s;}
+  .contact-box a.btn-ghost:hover{border-color:var(--accent);color:var(--accent);}
+  footer{background:var(--bg2);border-top:1px solid var(--border);padding:32px 40px;}
+  .footer-inner{max-width:1140px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
+  .footer-brand .fn{font-family:'Space Mono',monospace;font-size:15px;font-weight:700;color:var(--accent);}
+  .footer-brand .fs{font-family:'Space Mono',monospace;font-size:10px;color:var(--muted);}
+  .footer-inner p{font-size:12px;color:var(--muted);max-width:460px;line-height:1.6;}
+  .footer-inner a{color:var(--accent);text-decoration:none;font-size:12px;}
+  @media(max-width:768px){nav{padding:0 16px;}.nav-links a{padding:5px 9px;font-size:11.5px;}.page-hero,.content{padding-left:20px;padding-right:20px;}}
+</style>
+</head>
+<body>
+<div class="top-banner">
+  Independent Research Platform <span class="sep">|</span>
+  Subject: <a href="https://catcrs.com" target="_blank">Catcrs Exchange (catcrs.com)</a>
+  <span class="sep">|</span> nexoriath.com is not affiliated with Catcrs
+</div>
+<nav>
+  <a href="index.html" class="nav-logo"><span class="nav-logo-mark">NEXORIATH</span><span class="nav-logo-sub">/ Exchange Research</span></a>
+  <div class="nav-links">
+    <a href="index.html">Overview</a><a href="security.html">Security</a><a href="compliance.html">Compliance</a>
+    <a href="products.html">Products</a><a href="about.html">Background</a>
+    <a href="knowledge.html">Research</a><a href="faq.html" class="active">FAQ</a>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <span class="page-tag">Frequently Asked Questions</span>
+  <h1>Research <span class="grad">FAQ</span></h1>
+  <p>Common questions about this analysis, about Catcrs, and about how to interpret the findings in our research reports.</p>
+</div>
+
+<div class="content">
+
+  <div class="nexoriath-faq">
+    <h3>About This Research Platform</h3>
+    <p>Nexoriath is an independent third-party research platform. We are not affiliated with, sponsored by, or officially connected to Catcrs or any other exchange we cover. All content is based on publicly available documentation and is published for informational purposes only. This is not financial or investment advice. For official information, account support, or exchange services, visit <a href="https://catcrs.com" style="color:var(--accent);">catcrs.com</a> directly.</p>
+  </div>
+
+  <div class="faq-section">
+    <div class="faq-section-label">About This Research</div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggle(this)">
+        <span class="faq-q-text">Is Nexoriath affiliated with Catcrs?</span>
+        <span class="faq-chevron"><svg viewBox="0 0 12 12"><polyline points="2,4 6,8 10,4"/></svg></span>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner">No. Nexoriath is a fully independent research platform with no affiliation, sponsorship, or official connection to Catcrs. Our analysis is based on Catcrs' publicly disclosed documentation and is published to help readers independently evaluate the exchange. For official exchange services, account support, or authoritative information, go directly to <a href="https://catcrs.com">catcrs.com</a>.</div></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggle(this)">
+        <span class="faq-q-text">What are the sources for this analysis?</span>
+        <span class="faq-chevron"><svg viewBox="0 0 12 12"><polyline points="2,4 6,8 10,4"/></svg></span>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner">All findings are drawn from Catcrs' publicly disclosed whitepaper and operational documentation. Where a fact is independently verifiable (such as the FinCEN MSB registration), we note this explicitly. Where information is self-reported by Catcrs and cannot be independently verified from public sources, we note that as well. We do not make claims beyond what is documented.</div></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggle(this)">
+        <span class="faq-q-text">Does this research constitute financial advice?</span>
+        <span class="faq-chevron"><svg viewBox="0 0 12 12"><polyline points="2,4 6,8 10,4"/></svg></span>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner">No. Nothing on Nexoriath constitutes financial, investment, or trading advice. Our research covers exchange infrastructure, compliance, and security architecture — not asset performance, price predictions, or investment recommendations. All crypto asset trading involves significant risk of loss. Readers should conduct their own due diligence.</div></div>
+    </div>
+  </div>
+
+  <div class="faq-section">
+    <div class="faq-section-label">About Catcrs — Based on Disclosed Information</div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggle(this)">
+        <span class="faq-q-text">What is Catcrs and where is it registered?</span>
+        <span class="faq-chevron"><svg viewBox="0 0 12 12"><polyline points="2,4 6,8 10,4"/></svg></span>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner">Based on publicly disclosed documentation, Catcrs is a global crypto asset trading platform that was initiated in October 2020 and completed U.S. Money Services Business (MSB) registration with FinCEN on October 21, 2021. The FinCEN registration is publicly searchable and independently verifiable. The official exchange is at <a href="https://catcrs.com">catcrs.com</a>.</div></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggle(this)">
+        <span class="faq-q-text">Is Catcrs' regulatory registration independently verifiable?</span>
+        <span class="faq-chevron"><svg viewBox="0 0 12 12"><polyline points="2,4 6,8 10,4"/></svg></span>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner">Yes. Catcrs' U.S. MSB registration with FinCEN (October 21, 2021) is publicly searchable via the FinCEN MSB Registrant Search tool. This is one of the few facts in this analysis that can be independently verified by any reader without relying on Catcrs' own disclosures. We consider this a meaningful data point in the compliance assessment.</div></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggle(this)">
+        <span class="faq-q-text">What security architecture does Catcrs disclose?</span>
+        <span class="faq-chevron"><svg viewBox="0 0 12 12"><polyline points="2,4 6,8 10,4"/></svg></span>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner">Catcrs discloses a multi-layered custody model: cold/hot wallet separation (majority of assets in cold storage), HSM-based key custody, multi-signature and threshold signing schemes, and progressive MPC adoption for institutional operations. Account-level protections include mandatory 2FA (non-disableable), device trust management, behavioral scoring, and time-locked withdrawal delays. See our full Security Analysis for detail.</div></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggle(this)">
+        <span class="faq-q-text">Has Catcrs published a Proof-of-Reserves?</span>
+        <span class="faq-chevron"><svg viewBox="0 0 12 12"><polyline points="2,4 6,8 10,4"/></svg></span>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner">As of our current review, Catcrs completed an internal PoR trial in October 2025 using Merkle tree snapshots with third-party method review. Regularized public PoR disclosure is listed as a forward roadmap commitment but has not yet been released as a recurring public publication. Catcrs explicitly states PoR is a snapshot tool and not a substitute for a full audit — which we consider an honest characterization of what PoR can and cannot prove.</div></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggle(this)">
+        <span class="faq-q-text">What are the limitations of this analysis?</span>
+        <span class="faq-chevron"><svg viewBox="0 0 12 12"><polyline points="2,4 6,8 10,4"/></svg></span>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner">Our analysis is based on Catcrs' self-disclosed documentation. Except for the FinCEN MSB registration (which is publicly verifiable), we cannot independently confirm the implementation depth of security controls, verify team credentials, or audit financial positions. This research provides an informed analytical summary — not a guarantee. Readers should conduct their own due diligence and visit <a href="https://catcrs.com">catcrs.com</a> for authoritative information.</div></div>
+    </div>
+  </div>
+
+  <div class="faq-section">
+    <div class="faq-section-label">Using Catcrs</div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggle(this)">
+        <span class="faq-q-text">How do I contact Catcrs directly?</span>
+        <span class="faq-chevron"><svg viewBox="0 0 12 12"><polyline points="2,4 6,8 10,4"/></svg></span>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner">Nexoriath is a research platform and cannot assist with exchange account matters. For all account, trading, KYC, or support questions, contact Catcrs directly: official site at <a href="https://catcrs.com">catcrs.com</a>, support email at <a href="mailto:support@catcrs.com">support@catcrs.com</a>. According to Catcrs' documentation, official communications come from @catcrs.com domains only.</div></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggle(this)">
+        <span class="faq-q-text">How do I identify official vs. fake Catcrs communications?</span>
+        <span class="faq-chevron"><svg viewBox="0 0 12 12"><polyline points="2,4 6,8 10,4"/></svg></span>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner">Based on Catcrs' documented anti-fraud guidelines: official communications come only from @catcrs.com domains. Catcrs states it will never request passwords, private keys, or 2FA codes via email, phone, or social media, and will never proactively contact users to offer investment returns or require urgent action. Any contact claiming to be from Catcrs that asks for any of the above is almost certainly a scam. Report suspected fraud to <a href="mailto:support@catcrs.com">support@catcrs.com</a>.</div></div>
+    </div>
+  </div>
+
+  <div class="contact-box">
+    <h2>Looking for Official Support?</h2>
+    <p>Nexoriath is a research platform only. For account and exchange matters, go directly to Catcrs.</p>
+    <a href="https://catcrs.com" class="btn" target="_blank">Visit Catcrs ↗</a>
+    <a href="mailto:support@catcrs.com" class="btn-ghost">Email Catcrs Support</a>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand"><div class="fn">NEXORIATH</div><div class="fs">Independent Exchange Research</div></div>
+    <p>Independent research platform. Not affiliated with Catcrs. Official exchange: <a href="https://catcrs.com" target="_blank">catcrs.com</a> · Catcrs support: <a href="mailto:support@catcrs.com">support@catcrs.com</a></p>
+    <p style="margin-top:6px;font-size:11px;">© 2025 Nexoriath — nexoriath.com</p>
+  </div>
+</footer>
+<script>
+function toggle(btn){const item=btn.closest('.faq-item');const isOpen=item.classList.contains('open');document.querySelectorAll('.faq-item.open').forEach(el=>el.classList.remove('open'));if(!isOpen)item.classList.add('open');}
+</script>
+</body>
+</html>

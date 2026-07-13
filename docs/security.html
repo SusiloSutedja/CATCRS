@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Security Analysis: Catcrs Exchange — Nexoriath</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Sora:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#080c14;--bg2:#0d1220;--border:rgba(99,179,237,.15);--accent:#3b9eff;--accent2:#00e5c8;--accent3:#7c5bff;--text:#e2ecff;--muted:#7b91b0;--card:rgba(255,255,255,.03);--glow:rgba(59,158,255,.12);}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;overflow-x:hidden;}
+  .top-banner{background:rgba(13,18,32,.95);border-bottom:1px solid var(--border);text-align:center;padding:9px 20px;font-family:'Space Mono',monospace;font-size:12px;color:var(--muted);position:sticky;top:0;z-index:1000;}
+  .top-banner a{color:var(--accent);text-decoration:none;font-weight:700;}.top-banner .sep{margin:0 12px;opacity:.3;}
+  nav{position:sticky;top:38px;z-index:999;background:rgba(8,12,20,.94);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:64px;}
+  .nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+  .nav-logo-mark{font-family:'Space Mono',monospace;font-size:13px;font-weight:700;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:.06em;}
+  .nav-logo-sub{font-size:11px;color:var(--muted);letter-spacing:.04em;font-family:'Space Mono',monospace;}
+  .nav-links{display:flex;gap:4px;}
+  .nav-links a{color:var(--muted);text-decoration:none;font-size:13px;padding:8px 14px;border-radius:8px;transition:all .2s;font-weight:600;}
+  .nav-links a:hover,.nav-links a.active{color:var(--accent);background:var(--glow);}
+  .page-hero{padding:72px 40px 48px;max-width:1140px;margin:0 auto;}
+  .page-tag{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent2);margin-bottom:14px;display:block;}
+  .page-hero h1{font-size:clamp(28px,4vw,50px);font-weight:700;letter-spacing:-.02em;margin-bottom:14px;}
+  .page-hero h1 .grad{background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+  .page-hero p{font-size:15.5px;color:var(--muted);max-width:660px;line-height:1.8;}
+  .source-note{display:inline-flex;align-items:center;gap:8px;background:rgba(124,91,255,.07);border:1px solid rgba(124,91,255,.18);border-radius:8px;padding:8px 14px;font-size:12px;color:#a89be0;margin-top:18px;}
+  .content{max-width:1140px;margin:0 auto;padding:0 40px 100px;}
+  .section-divider{border:none;border-top:1px solid var(--border);margin:56px 0;}
+  .sec-head{margin-bottom:36px;}
+  .sec-head .label{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.12em;color:var(--accent);text-transform:uppercase;margin-bottom:8px;display:block;}
+  .sec-head h2{font-size:clamp(20px,2.8vw,30px);font-weight:700;letter-spacing:-.01em;margin-bottom:10px;}
+  .sec-head p{font-size:14.5px;color:var(--muted);max-width:600px;line-height:1.75;}
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+  .card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:26px;}
+  .card-icon{font-size:26px;margin-bottom:12px;}
+  .card h3{font-size:15.5px;font-weight:700;margin-bottom:8px;}
+  .card p{font-size:13px;color:var(--muted);line-height:1.7;}
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:28px;}
+  .feature-list{list-style:none;}
+  .feature-list li{display:flex;gap:12px;align-items:flex-start;margin-bottom:20px;}
+  .feature-list li .icon{width:34px;height:34px;border-radius:9px;background:var(--glow);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;margin-top:2px;}
+  .feature-list li div{flex:1;}
+  .feature-list li strong{display:block;font-size:14.5px;margin-bottom:3px;}
+  .feature-list li span{font-size:13px;color:var(--muted);}
+  .highlight-box{background:linear-gradient(135deg,rgba(59,158,255,.07),rgba(124,91,255,.07));border:1px solid rgba(59,158,255,.2);border-radius:14px;padding:32px;margin-top:28px;}
+  .highlight-box h3{font-size:18px;font-weight:700;margin-bottom:10px;}
+  .highlight-box p{font-size:14px;color:var(--muted);line-height:1.75;}
+  .tag-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;}
+  .tag{background:rgba(59,158,255,.08);border:1px solid rgba(59,158,255,.2);border-radius:100px;padding:5px 12px;font-size:11px;color:var(--accent);font-family:'Space Mono',monospace;}
+  .analyst-note{background:rgba(124,91,255,.06);border-left:3px solid var(--accent3);border-radius:0 10px 10px 0;padding:18px 22px;margin-top:24px;font-size:13.5px;color:#b0a0d8;line-height:1.7;}
+  .analyst-note strong{color:var(--accent3);}
+  footer{background:var(--bg2);border-top:1px solid var(--border);padding:32px 40px;}
+  .footer-inner{max-width:1140px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
+  .footer-brand .fn{font-family:'Space Mono',monospace;font-size:15px;font-weight:700;color:var(--accent);}
+  .footer-brand .fs{font-family:'Space Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:.05em;}
+  .footer-inner p{font-size:12px;color:var(--muted);max-width:460px;line-height:1.6;}
+  .footer-inner a{color:var(--accent);text-decoration:none;font-size:12px;}
+  @media(max-width:768px){nav{padding:0 16px;}.nav-links a{padding:5px 9px;font-size:11.5px;}.cards{grid-template-columns:1fr;}.two-col{grid-template-columns:1fr;}.page-hero,.content{padding-left:20px;padding-right:20px;}}
+</style>
+</head>
+<body>
+
+<div class="top-banner">
+  Independent Research Platform <span class="sep">|</span>
+  Subject: <a href="https://catcrs.com" target="_blank">Catcrs Exchange (catcrs.com)</a>
+  <span class="sep">|</span> nexoriath.com is not affiliated with Catcrs
+</div>
+<nav>
+  <a href="index.html" class="nav-logo">
+    <span class="nav-logo-mark">NEXORIATH</span>
+    <span class="nav-logo-sub">/ Exchange Research</span>
+  </a>
+  <div class="nav-links">
+    <a href="index.html">Overview</a>
+    <a href="security.html" class="active">Security</a>
+    <a href="compliance.html">Compliance</a>
+    <a href="products.html">Products</a>
+    <a href="about.html">Background</a>
+    <a href="knowledge.html">Research</a>
+    <a href="faq.html">FAQ</a>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <span class="page-tag">Analysis Track 01 — Security Architecture</span>
+  <h1>Security Review:<br><span class="grad">Catcrs Exchange</span></h1>
+  <p>An independent analysis of Catcrs' disclosed security architecture, covering cold/hot wallet custody, HSM and MPC key management, matching engine resilience, and account-level protection mechanisms.</p>
+  <div class="source-note">⚠ Source: Catcrs publicly disclosed whitepaper and operational documentation. Nexoriath is not affiliated with Catcrs.</div>
+</div>
+
+<div class="content">
+
+  <div class="sec-head">
+    <span class="label">01 — Custody Architecture</span>
+    <h2>Wallet Separation & Key Management</h2>
+    <p>Catcrs discloses a tiered custody model. According to their documentation, the majority of user assets are held in cold storage, with hot wallets maintained only for operational liquidity.</p>
+  </div>
+
+  <div class="cards">
+    <div class="card">
+      <div class="card-icon">🧊</div>
+      <h3>Cold / Hot Separation</h3>
+      <p>Catcrs states that most user assets reside in cold storage, physically isolated from internet-connected systems. A controlled portion remains in hot wallets for liquidity. This is a standard institutional custody practice.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🔑</div>
+      <h3>HSM Key Custody</h3>
+      <p>Hardware Security Modules (HSMs) are used for key storage and signing operations. HSMs provide tamper-evident, hardware-enforced protection — a well-established standard in financial key management.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">✍️</div>
+      <h3>Multi-Signature / Threshold</h3>
+      <p>Critical transactions require multiple independent cryptographic signatures. Threshold schemes eliminate single points of failure in key management, a meaningful risk reduction compared to single-key custody models.</p>
+    </div>
+  </div>
+
+  <div class="highlight-box">
+    <h3>MPC Enhancement — Institutional Roadmap</h3>
+    <p>Catcrs discloses that MPC (Multi-Party Computation) is being progressively adopted for institutional and large-scale operations. MPC allows threshold signing without reconstructing full keys, supports dynamic threshold changes without address rebuilding, and reduces single-point risk. Industry adoption is growing as an upgrade path from traditional multi-sig.</p>
+    <div class="tag-row">
+      <span class="tag">Threshold Signing</span>
+      <span class="tag">No Key Reconstruction</span>
+      <span class="tag">Dynamic Thresholds</span>
+      <span class="tag">Institutional Rollout</span>
+    </div>
+  </div>
+  <div class="analyst-note"><strong>Nexoriath Note:</strong> Cold/hot separation, HSM custody, and multi-signature schemes are all established industry practices. Their presence is a positive signal — though their actual implementation depth cannot be independently verified from public disclosures alone.</div>
+
+  <hr class="section-divider">
+
+  <div class="sec-head">
+    <span class="label">02 — Matching Engine</span>
+    <h2>Self-Developed, Low-Latency Architecture</h2>
+    <p>Catcrs operates a proprietary matching engine built on order sequence consistency as its foundational constraint. The engine underwent a major v2 upgrade in October 2023.</p>
+  </div>
+
+  <div class="two-col">
+    <ul class="feature-list">
+      <li><div class="icon">⚙️</div><div><strong>Partitioning & Horizontal Scaling</strong><span>The engine supports partition sharding and horizontal expansion to handle load increases without compromising order integrity.</span></div></li>
+      <li><div class="icon">🔄</div><div><strong>Failover & Redundancy</strong><span>Redundancy is deployed at all critical nodes. Clearing pathways are separated from fund accounts to prevent cascading failures.</span></div></li>
+      <li><div class="icon">↩️</div><div><strong>Transactional Rollback</strong><span>Major changes include transactional switches and rapid rollback capabilities, enabling fast recovery from unexpected states.</span></div></li>
+    </ul>
+    <ul class="feature-list">
+      <li><div class="icon">🛡️</div><div><strong>Pre-Matching Validation</strong><span>A rules engine validates orders before matching, preventing malformed or malicious submissions from reaching the core engine.</span></div></li>
+      <li><div class="icon">📊</div><div><strong>Post-Matching Monitoring</strong><span>Continuous post-execution monitoring detects abnormal patterns, volatility anomalies, and potential market manipulation signals.</span></div></li>
+      <li><div class="icon">🔌</div><div><strong>Multi-Protocol API</strong><span>REST, WebSocket, and FIX interfaces all use signature verification and tiered rate limiting. A sandbox is available for institutional joint debugging.</span></div></li>
+    </ul>
+  </div>
+
+  <hr class="section-divider">
+
+  <div class="sec-head">
+    <span class="label">03 — Account Security</span>
+    <h2>Default-Secure Configuration</h2>
+    <p>Catcrs documents a set of security defaults applied to all accounts — not optional add-ons. These include mandatory 2FA, device trust management, and behavioral scoring linked to withdrawal controls.</p>
+  </div>
+
+  <div class="cards">
+    <div class="card"><div class="card-icon">🔐</div><h3>Mandatory 2FA</h3><p>2FA is required for all accounts without exception and cannot be disabled once enabled. This is a stronger baseline than many exchanges that treat 2FA as optional.</p></div>
+    <div class="card"><div class="card-icon">📱</div><h3>Device Trust Management</h3><p>Unrecognized devices trigger verification flows and remote login alerts. Device trust lists are maintained per account.</p></div>
+    <div class="card"><div class="card-icon">🚨</div><h3>Withdrawal Controls</h3><p>Large withdrawals trigger behavioral scoring and time delays. Withdrawal whitelists and address verification prevent funds moving to unconfirmed destinations.</p></div>
+    <div class="card"><div class="card-icon">🧠</div><h3>Behavioral Anomaly Detection</h3><p>Abnormal login and withdrawal behavior triggers interception and secondary confirmation. The stated principle is that "silent success" is never prioritized over protection.</p></div>
+    <div class="card"><div class="card-icon">⏱️</div><h3>Time-Locked Delays</h3><p>Withdrawals above configurable thresholds are subject to delays linked to behavioral scoring, providing a recovery window in the event of account compromise.</p></div>
+    <div class="card"><div class="card-icon">📡</div><h3>Anti-Phishing Education</h3><p>Anti-fraud education is integrated into the registration flow, with guides on identifying official vs. counterfeit channels embedded before first transaction.</p></div>
+  </div>
+
+  <div class="analyst-note"><strong>Nexoriath Note:</strong> Mandatory (non-disableable) 2FA is above-average for the industry. The combination of behavioral scoring, time-locked withdrawal delays, and device trust management represents a layered defense model. These controls are disclosed by Catcrs — independent verification of implementation is outside the scope of this analysis.</div>
+
+  <hr class="section-divider">
+
+  <div class="sec-head">
+    <span class="label">04 — Proof of Reserves</span>
+    <h2>Reserve Transparency Framework</h2>
+    <p>Catcrs initiated an internal Proof-of-Reserves (PoR) trial in October 2025 using Merkle tree snapshots with third-party method review. Regularized public disclosures are listed as a forward roadmap commitment.</p>
+  </div>
+
+  <div class="two-col">
+    <ul class="feature-list">
+      <li><div class="icon">🌳</div><div><strong>Merkle Tree Snapshots</strong><span>Current PoR methodology uses Merkle tree snapshots, enabling users to verify their balance's inclusion without exposing other users' data.</span></div></li>
+      <li><div class="icon">🔍</div><div><strong>Third-Party Method Review</strong><span>The PoR approach itself — not just the results — is reviewed by independent third parties to validate methodological correctness.</span></div></li>
+      <li><div class="icon">🔒</div><div><strong>ZK Proof Roadmap</strong><span>Catcrs states interfaces have been reserved in their architecture for future zk-SNARK/zk-STARK integration as the approach matures.</span></div></li>
+    </ul>
+    <div class="highlight-box" style="margin-top:0;">
+      <h3>Analyst Scope Note</h3>
+      <p>Catcrs explicitly states that PoR is a snapshot tool, not a substitute for a full audit — and communicates this boundary publicly. This level of disclosure honesty is worth noting: many exchanges overstate the assurance value of PoR. As of our review, regularized public PoR has not yet been released; we will update this analysis when it is.</p>
+      <div class="tag-row">
+        <span class="tag">Internal Trial: Oct 2025</span>
+        <span class="tag">Public Disclosure: Planned</span>
+        <span class="tag">ZK Roadmap: Reserved</span>
+      </div>
+    </div>
+  </div>
+
+  <hr class="section-divider">
+
+  <div class="sec-head">
+    <span class="label">05 — Resilience</span>
+    <h2>Disaster Recovery & Observability</h2>
+    <p>Catcrs documents multi-region failover drills (normalized since May 2024), capacity stress testing, and a public status page with standardized event timelines.</p>
+  </div>
+
+  <div class="cards">
+    <div class="card"><div class="card-icon">📉</div><h3>Capacity Stress Testing</h3><p>Regular load tests against production-equivalent environments to identify bottlenecks before they become incidents. Disclosed as an ongoing practice.</p></div>
+    <div class="card"><div class="card-icon">🌍</div><h3>Multi-Region DR Drills</h3><p>Multi-region failover drills are documented as normalized since May 2024. Rollback processes are standardized and regularly rehearsed — not theoretical.</p></div>
+    <div class="card"><div class="card-icon">📢</div><h3>Public Status Page</h3><p>Catcrs uses standardized templates for event timelines and root cause summaries. Root cause analysis is published after major incidents for external evaluation.</p></div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand"><div class="fn">NEXORIATH</div><div class="fs">Independent Exchange Research</div></div>
+    <p>This analysis is based on Catcrs' publicly available documentation. Nexoriath is not affiliated with Catcrs. Visit the official exchange at <a href="https://catcrs.com" target="_blank">catcrs.com</a>. Contact Catcrs support: <a href="mailto:support@catcrs.com">support@catcrs.com</a></p>
+    <p style="margin-top:8px;font-size:11px;">© 2025 Nexoriath — nexoriath.com</p>
+  </div>
+</footer>
+</body>
+</html>

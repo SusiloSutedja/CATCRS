@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Product Coverage: Catcrs Exchange — Nexoriath</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Sora:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#080c14;--bg2:#0d1220;--border:rgba(99,179,237,.15);--accent:#3b9eff;--accent2:#00e5c8;--accent3:#7c5bff;--text:#e2ecff;--muted:#7b91b0;--card:rgba(255,255,255,.03);--glow:rgba(59,158,255,.12);}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;overflow-x:hidden;}
+  .top-banner{background:rgba(13,18,32,.95);border-bottom:1px solid var(--border);text-align:center;padding:9px 20px;font-family:'Space Mono',monospace;font-size:12px;color:var(--muted);position:sticky;top:0;z-index:1000;}
+  .top-banner a{color:var(--accent);text-decoration:none;font-weight:700;}.top-banner .sep{margin:0 12px;opacity:.3;}
+  nav{position:sticky;top:38px;z-index:999;background:rgba(8,12,20,.94);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:64px;}
+  .nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+  .nav-logo-mark{font-family:'Space Mono',monospace;font-size:13px;font-weight:700;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:.06em;}
+  .nav-logo-sub{font-size:11px;color:var(--muted);letter-spacing:.04em;font-family:'Space Mono',monospace;}
+  .nav-links{display:flex;gap:4px;}
+  .nav-links a{color:var(--muted);text-decoration:none;font-size:13px;padding:8px 14px;border-radius:8px;transition:all .2s;font-weight:600;}
+  .nav-links a:hover,.nav-links a.active{color:var(--accent);background:var(--glow);}
+  .page-hero{padding:72px 40px 48px;max-width:1140px;margin:0 auto;}
+  .page-tag{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent2);margin-bottom:14px;display:block;}
+  .page-hero h1{font-size:clamp(28px,4vw,50px);font-weight:700;letter-spacing:-.02em;margin-bottom:14px;}
+  .page-hero h1 .grad{background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+  .page-hero p{font-size:15.5px;color:var(--muted);max-width:660px;line-height:1.8;}
+  .source-note{display:inline-flex;align-items:center;gap:8px;background:rgba(124,91,255,.07);border:1px solid rgba(124,91,255,.18);border-radius:8px;padding:8px 14px;font-size:12px;color:#a89be0;margin-top:18px;}
+  .content{max-width:1140px;margin:0 auto;padding:0 40px 100px;}
+  .section-divider{border:none;border-top:1px solid var(--border);margin:56px 0;}
+  .sec-head{margin-bottom:36px;}
+  .sec-head .label{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.12em;color:var(--accent);text-transform:uppercase;margin-bottom:8px;display:block;}
+  .sec-head h2{font-size:clamp(20px,2.8vw,30px);font-weight:700;letter-spacing:-.01em;margin-bottom:10px;}
+  .sec-head p{font-size:14.5px;color:var(--muted);max-width:600px;line-height:1.75;}
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+  .card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:26px;}
+  .card-icon{font-size:26px;margin-bottom:12px;} .card h3{font-size:15.5px;font-weight:700;margin-bottom:8px;} .card p{font-size:13px;color:var(--muted);line-height:1.7;}
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:28px;}
+  .feature-list{list-style:none;}
+  .feature-list li{display:flex;gap:12px;align-items:flex-start;margin-bottom:20px;}
+  .feature-list li .icon{width:34px;height:34px;border-radius:9px;background:var(--glow);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;margin-top:2px;}
+  .feature-list li div{flex:1;} .feature-list li strong{display:block;font-size:14.5px;margin-bottom:3px;} .feature-list li span{font-size:13px;color:var(--muted);}
+  .highlight-box{background:linear-gradient(135deg,rgba(59,158,255,.07),rgba(124,91,255,.07));border:1px solid rgba(59,158,255,.2);border-radius:14px;padding:32px;}
+  .highlight-box h3{font-size:18px;font-weight:700;margin-bottom:10px;} .highlight-box p{font-size:14px;color:var(--muted);line-height:1.75;}
+  .tag-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;}
+  .tag{background:rgba(59,158,255,.08);border:1px solid rgba(59,158,255,.2);border-radius:100px;padding:5px 12px;font-size:11px;color:var(--accent);font-family:'Space Mono',monospace;}
+  .analyst-note{background:rgba(124,91,255,.06);border-left:3px solid var(--accent3);border-radius:0 10px 10px 0;padding:18px 22px;margin-top:24px;font-size:13.5px;color:#b0a0d8;line-height:1.7;}
+  .analyst-note strong{color:var(--accent3);}
+  .audience-split{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-bottom:40px;}
+  .audience-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:32px;}
+  .aud-label{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.1em;color:var(--accent2);text-transform:uppercase;margin-bottom:10px;}
+  .audience-card h3{font-size:18px;font-weight:700;margin-bottom:14px;}
+  .audience-card ul{list-style:none;}
+  .audience-card ul li{font-size:13.5px;color:var(--muted);padding:7px 0;border-bottom:1px solid var(--border);display:flex;gap:10px;align-items:flex-start;}
+  .audience-card ul li:last-child{border-bottom:none;}
+  .audience-card ul li::before{content:'→';color:var(--accent);font-family:'Space Mono',monospace;font-size:12px;flex-shrink:0;margin-top:2px;}
+  .api-block{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:28px;font-family:'Space Mono',monospace;}
+  .api-block .api-label{font-size:10px;letter-spacing:.12em;color:var(--accent2);text-transform:uppercase;margin-bottom:18px;}
+  .api-row{display:flex;align-items:center;gap:14px;padding:12px 0;border-bottom:1px solid var(--border);}
+  .api-row:last-child{border-bottom:none;}
+  .api-method{background:rgba(59,158,255,.1);border:1px solid rgba(59,158,255,.2);color:var(--accent);padding:3px 10px;border-radius:6px;font-size:11px;min-width:76px;text-align:center;}
+  .api-path{font-size:12.5px;color:var(--text);}
+  .api-desc{font-size:11px;color:var(--muted);margin-left:auto;}
+  footer{background:var(--bg2);border-top:1px solid var(--border);padding:32px 40px;}
+  .footer-inner{max-width:1140px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
+  .footer-brand .fn{font-family:'Space Mono',monospace;font-size:15px;font-weight:700;color:var(--accent);}
+  .footer-brand .fs{font-family:'Space Mono',monospace;font-size:10px;color:var(--muted);}
+  .footer-inner p{font-size:12px;color:var(--muted);max-width:460px;line-height:1.6;}
+  .footer-inner a{color:var(--accent);text-decoration:none;font-size:12px;}
+  @media(max-width:768px){nav{padding:0 16px;}.nav-links a{padding:5px 9px;font-size:11.5px;}.cards,.audience-split{grid-template-columns:1fr;}.two-col{grid-template-columns:1fr;}.page-hero,.content{padding-left:20px;padding-right:20px;}.api-desc{display:none;}}
+</style>
+</head>
+<body>
+<div class="top-banner">
+  Independent Research Platform <span class="sep">|</span>
+  Subject: <a href="https://catcrs.com" target="_blank">Catcrs Exchange (catcrs.com)</a>
+  <span class="sep">|</span> nexoriath.com is not affiliated with Catcrs
+</div>
+<nav>
+  <a href="index.html" class="nav-logo"><span class="nav-logo-mark">NEXORIATH</span><span class="nav-logo-sub">/ Exchange Research</span></a>
+  <div class="nav-links">
+    <a href="index.html">Overview</a><a href="security.html">Security</a><a href="compliance.html">Compliance</a>
+    <a href="products.html" class="active">Products</a>
+    <a href="about.html">Background</a><a href="knowledge.html">Research</a><a href="faq.html">FAQ</a>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <span class="page-tag">Analysis Track 03 — Products & Infrastructure</span>
+  <h1>Product Coverage:<br><span class="grad">Catcrs Exchange</span></h1>
+  <p>An independent review of Catcrs' disclosed product suite — covering individual and institutional trading, API infrastructure, custody and settlement, fee structure, and educational resources.</p>
+  <div class="source-note">⚠ Source: Catcrs publicly disclosed documentation. Nexoriath is not affiliated with Catcrs.</div>
+</div>
+
+<div class="content">
+
+  <div class="audience-split">
+    <div class="audience-card">
+      <div class="aud-label">Individual Users</div>
+      <h3>Disclosed Features</h3>
+      <ul>
+        <li>Spot trading with depth/slippage visualization</li>
+        <li>C2C peer-to-peer exchange</li>
+        <li>Futures & options (compliant jurisdictions only)</li>
+        <li>Mandatory 2FA and device trust management</li>
+        <li>Withdrawal whitelists and behavioral detection</li>
+        <li>Breakpoint reconnection & order tracking</li>
+        <li>Catcrs Academy educational content</li>
+      </ul>
+    </div>
+    <div class="audience-card">
+      <div class="aud-label">Institutional Clients</div>
+      <h3>Disclosed Features</h3>
+      <ul>
+        <li>Market making with tiered fee structures</li>
+        <li>Matching engine seat access & risk parameter negotiation</li>
+        <li>Multi-asset batch settlement tools</li>
+        <li>Aggregation and transfer toolset</li>
+        <li>Auditable custody with reconciliation exports</li>
+        <li>API rate limit customization & risk control whitelists</li>
+        <li>Operation logs for compliance and audit</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="analyst-note"><strong>Nexoriath Note:</strong> The above represents Catcrs' disclosed product feature set. Actual product availability varies by jurisdiction and account type. Readers should verify current availability directly at <a href="https://catcrs.com" style="color:var(--accent);">catcrs.com</a>.</div>
+
+  <hr class="section-divider">
+
+  <div class="sec-head">
+    <span class="label">01 — Trading Products</span>
+    <h2>Spot, C2C & Derivatives</h2>
+    <p>Catcrs documents a core spot trading product and C2C exchange as baseline offerings, with derivatives progressively rolled out in compliant jurisdictions.</p>
+  </div>
+
+  <div class="cards">
+    <div class="card"><div class="card-icon">📈</div><h3>Spot Trading</h3><p>Core spot markets with real-time depth visualization, slippage indicators, and full order tracking. Matching engine v2 (Oct 2023) delivers improved latency with order sequence consistency as the foundational constraint.</p></div>
+    <div class="card"><div class="card-icon">🤝</div><h3>C2C Exchange</h3><p>Peer-to-peer exchange with compliant payment channel integrations, identity-verified counterparties, and dispute resolution support — designed for markets where direct trading is preferred.</p></div>
+    <div class="card"><div class="card-icon">⚖️</div><h3>Futures & Options</h3><p>Derivatives access is being progressively opened in jurisdictions where compliance frameworks are established. According to Catcrs, availability is determined by regulatory status, not market demand.</p></div>
+  </div>
+
+  <hr class="section-divider">
+
+  <div class="sec-head">
+    <span class="label">02 — API Infrastructure</span>
+    <h2>REST / WebSocket / FIX</h2>
+    <p>Catcrs documents a full programmatic access layer for algorithmic trading, market making, and institutional integration, with security controls at each interface layer.</p>
+  </div>
+
+  <div class="two-col">
+    <div class="api-block">
+      <div class="api-label">Disclosed API Interfaces</div>
+      <div class="api-row"><span class="api-method">REST</span><span class="api-path">HTTPS Endpoints</span><span class="api-desc">Full account & market access</span></div>
+      <div class="api-row"><span class="api-method">WebSocket</span><span class="api-path">WSS Streams</span><span class="api-desc">Real-time market data</span></div>
+      <div class="api-row"><span class="api-method">FIX</span><span class="api-path">FIX Protocol v4.x</span><span class="api-desc">Institutional order routing</span></div>
+      <div class="api-row"><span class="api-method">Sandbox</span><span class="api-path">Test Environment</span><span class="api-desc">Joint debugging & validation</span></div>
+    </div>
+    <ul class="feature-list">
+      <li><div class="icon">🔏</div><div><strong>Signature Verification</strong><span>All API requests require cryptographic signing. Replay attacks and request tampering are rejected at gateway level before reaching backend services.</span></div></li>
+      <li><div class="icon">⏱️</div><div><strong>Tiered Rate Limiting</strong><span>Rate limits applied per key and account tier. Institutions can negotiate custom parameters within the disclosed risk framework.</span></div></li>
+      <li><div class="icon">🧪</div><div><strong>Sandbox Environment</strong><span>Market makers and quantitative institutions have access to a joint debugging sandbox with test quotas and full API parity.</span></div></li>
+    </ul>
+  </div>
+
+  <hr class="section-divider">
+
+  <div class="sec-head">
+    <span class="label">03 — Fee Structure</span>
+    <h2>Transparency Assessment</h2>
+    <p>Catcrs documents a tiered maker/taker fee structure and states that the full schedule is published on the official exchange with concrete illustrative examples.</p>
+  </div>
+
+  <div class="highlight-box">
+    <h3>Disclosed Fee Philosophy</h3>
+    <p>Catcrs documents that fee rates decrease with higher trading volume (tiered structure) and that personalized arrangements for market makers and institutions are available on a documented, auditable basis. The stated principle is that fees are "short, comparable, and free of hidden terms" with "no undisclosed charges." Full verification requires consulting the live fee schedule at <a href="https://catcrs.com" style="color:var(--accent2);">catcrs.com</a>.</p>
+    <div class="tag-row">
+      <span class="tag">Tiered Maker/Taker</span><span class="tag">Published with Examples</span><span class="tag">No Hidden Fees (Stated)</span><span class="tag">Institutional Custom Terms (Auditable)</span>
+    </div>
+  </div>
+
+  <hr class="section-divider">
+
+  <div class="sec-head">
+    <span class="label">04 — Education</span>
+    <h2>Catcrs Academy</h2>
+    <p>Catcrs documents an educational platform ("Catcrs Academy") covering wallet security, trading risk identification, market methodology, and anti-scam guides.</p>
+  </div>
+
+  <div class="cards">
+    <div class="card"><div class="card-icon">🎓</div><h3>Structured Curriculum</h3><p>Courses covering wallet and key management, trading risk identification, strategy frameworks, and market microstructure — disclosed as designed for beginners through advanced practitioners.</p></div>
+    <div class="card"><div class="card-icon">📰</div><h3>Methodology Articles</h3><p>Disclosed as weekly and quarterly publications sharing analytical frameworks and how the team approaches operational problems. Explicitly not investment advice.</p></div>
+    <div class="card"><div class="card-icon">🛡️</div><h3>Anti-Scam Resources</h3><p>Multilingual "scam identification" guides covering phishing, social engineering, and guaranteed-return fraud — embedded into the onboarding flow per Catcrs' documentation.</p></div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand"><div class="fn">NEXORIATH</div><div class="fs">Independent Exchange Research</div></div>
+    <p>This analysis is based on Catcrs' publicly available documentation. Nexoriath is not affiliated with Catcrs. Official exchange: <a href="https://catcrs.com" target="_blank">catcrs.com</a> · Support: <a href="mailto:support@catcrs.com">support@catcrs.com</a></p>
+    <p style="margin-top:6px;font-size:11px;">© 2025 Nexoriath — nexoriath.com</p>
+  </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Compliance Review: Catcrs Exchange — Nexoriath</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Sora:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#080c14;--bg2:#0d1220;--border:rgba(99,179,237,.15);--accent:#3b9eff;--accent2:#00e5c8;--accent3:#7c5bff;--text:#e2ecff;--muted:#7b91b0;--card:rgba(255,255,255,.03);--glow:rgba(59,158,255,.12);}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;overflow-x:hidden;}
+  .top-banner{background:rgba(13,18,32,.95);border-bottom:1px solid var(--border);text-align:center;padding:9px 20px;font-family:'Space Mono',monospace;font-size:12px;color:var(--muted);position:sticky;top:0;z-index:1000;}
+  .top-banner a{color:var(--accent);text-decoration:none;font-weight:700;}.top-banner .sep{margin:0 12px;opacity:.3;}
+  nav{position:sticky;top:38px;z-index:999;background:rgba(8,12,20,.94);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:64px;}
+  .nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+  .nav-logo-mark{font-family:'Space Mono',monospace;font-size:13px;font-weight:700;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:.06em;}
+  .nav-logo-sub{font-size:11px;color:var(--muted);letter-spacing:.04em;font-family:'Space Mono',monospace;}
+  .nav-links{display:flex;gap:4px;}
+  .nav-links a{color:var(--muted);text-decoration:none;font-size:13px;padding:8px 14px;border-radius:8px;transition:all .2s;font-weight:600;}
+  .nav-links a:hover,.nav-links a.active{color:var(--accent);background:var(--glow);}
+  .page-hero{padding:72px 40px 48px;max-width:1140px;margin:0 auto;}
+  .page-tag{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent2);margin-bottom:14px;display:block;}
+  .page-hero h1{font-size:clamp(28px,4vw,50px);font-weight:700;letter-spacing:-.02em;margin-bottom:14px;}
+  .page-hero h1 .grad{background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+  .page-hero p{font-size:15.5px;color:var(--muted);max-width:660px;line-height:1.8;}
+  .source-note{display:inline-flex;align-items:center;gap:8px;background:rgba(124,91,255,.07);border:1px solid rgba(124,91,255,.18);border-radius:8px;padding:8px 14px;font-size:12px;color:#a89be0;margin-top:18px;}
+  .content{max-width:1140px;margin:0 auto;padding:0 40px 100px;}
+  .section-divider{border:none;border-top:1px solid var(--border);margin:56px 0;}
+  .sec-head{margin-bottom:36px;}
+  .sec-head .label{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.12em;color:var(--accent);text-transform:uppercase;margin-bottom:8px;display:block;}
+  .sec-head h2{font-size:clamp(20px,2.8vw,30px);font-weight:700;letter-spacing:-.01em;margin-bottom:10px;}
+  .sec-head p{font-size:14.5px;color:var(--muted);max-width:600px;line-height:1.75;}
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+  .card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:26px;}
+  .card-icon{font-size:26px;margin-bottom:12px;} .card h3{font-size:15.5px;font-weight:700;margin-bottom:8px;} .card p{font-size:13px;color:var(--muted);line-height:1.7;}
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:28px;}
+  .feature-list{list-style:none;}
+  .feature-list li{display:flex;gap:12px;align-items:flex-start;margin-bottom:20px;}
+  .feature-list li .icon{width:34px;height:34px;border-radius:9px;background:var(--glow);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;margin-top:2px;}
+  .feature-list li div{flex:1;} .feature-list li strong{display:block;font-size:14.5px;margin-bottom:3px;} .feature-list li span{font-size:13px;color:var(--muted);}
+  .highlight-box{background:linear-gradient(135deg,rgba(59,158,255,.07),rgba(124,91,255,.07));border:1px solid rgba(59,158,255,.2);border-radius:14px;padding:32px;}
+  .highlight-box h3{font-size:18px;font-weight:700;margin-bottom:10px;} .highlight-box p{font-size:14px;color:var(--muted);line-height:1.75;}
+  .tag-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;}
+  .tag{background:rgba(59,158,255,.08);border:1px solid rgba(59,158,255,.2);border-radius:100px;padding:5px 12px;font-size:11px;color:var(--accent);font-family:'Space Mono',monospace;}
+  .analyst-note{background:rgba(124,91,255,.06);border-left:3px solid var(--accent3);border-radius:0 10px 10px 0;padding:18px 22px;margin-top:24px;font-size:13.5px;color:#b0a0d8;line-height:1.7;}
+  .analyst-note strong{color:var(--accent3);}
+  .cert-block{background:linear-gradient(135deg,rgba(0,229,200,.06),rgba(59,158,255,.06));border:1px solid rgba(0,229,200,.22);border-radius:18px;padding:44px;margin-bottom:28px;display:grid;grid-template-columns:1fr 1.6fr;gap:40px;align-items:center;}
+  .cert-badge .big{font-family:'Space Mono',monospace;font-size:48px;color:var(--accent2);font-weight:700;display:block;line-height:1;}
+  .cert-badge .blabel{font-size:11px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-top:8px;display:block;}
+  .dot{width:7px;height:7px;border-radius:50%;background:var(--accent2);display:inline-block;animation:pulse 2s infinite;margin-right:6px;}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+  .cert-detail h3{font-size:20px;font-weight:700;margin-bottom:10px;}
+  .cert-detail p{font-size:14px;color:var(--muted);line-height:1.75;}
+  .cert-detail .date{font-family:'Space Mono',monospace;font-size:11px;color:var(--accent);margin-top:14px;display:block;}
+  .roadmap-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;}
+  .roadmap-item{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:26px;}
+  .rnum{font-family:'Space Mono',monospace;font-size:10px;color:var(--accent2);letter-spacing:.1em;margin-bottom:8px;}
+  .roadmap-item h4{font-size:15.5px;font-weight:700;margin-bottom:8px;}
+  .roadmap-item p{font-size:13px;color:var(--muted);line-height:1.7;}
+  footer{background:var(--bg2);border-top:1px solid var(--border);padding:32px 40px;}
+  .footer-inner{max-width:1140px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
+  .footer-brand .fn{font-family:'Space Mono',monospace;font-size:15px;font-weight:700;color:var(--accent);}
+  .footer-brand .fs{font-family:'Space Mono',monospace;font-size:10px;color:var(--muted);}
+  .footer-inner p{font-size:12px;color:var(--muted);max-width:460px;line-height:1.6;}
+  .footer-inner a{color:var(--accent);text-decoration:none;font-size:12px;}
+  @media(max-width:768px){nav{padding:0 16px;}.nav-links a{padding:5px 9px;font-size:11.5px;}.cards,.roadmap-grid{grid-template-columns:1fr;}.two-col{grid-template-columns:1fr;}.cert-block{grid-template-columns:1fr;}.page-hero,.content{padding-left:20px;padding-right:20px;}}
+</style>
+</head>
+<body>
+<div class="top-banner">
+  Independent Research Platform <span class="sep">|</span>
+  Subject: <a href="https://catcrs.com" target="_blank">Catcrs Exchange (catcrs.com)</a>
+  <span class="sep">|</span> nexoriath.com is not affiliated with Catcrs
+</div>
+<nav>
+  <a href="index.html" class="nav-logo"><span class="nav-logo-mark">NEXORIATH</span><span class="nav-logo-sub">/ Exchange Research</span></a>
+  <div class="nav-links">
+    <a href="index.html">Overview</a><a href="security.html">Security</a>
+    <a href="compliance.html" class="active">Compliance</a>
+    <a href="products.html">Products</a><a href="about.html">Background</a>
+    <a href="knowledge.html">Research</a><a href="faq.html">FAQ</a>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <span class="page-tag">Analysis Track 02 — Regulatory Compliance</span>
+  <h1>Compliance Review:<br><span class="grad">Catcrs Exchange</span></h1>
+  <p>An independent review of Catcrs' regulatory standing, covering its U.S. MSB registration, BSA/AML compliance framework, FATF Travel Rule adaptation, and jurisdictional approach.</p>
+  <div class="source-note">⚠ Source: Catcrs publicly disclosed documentation. Nexoriath is not affiliated with Catcrs.</div>
+</div>
+
+<div class="content">
+
+  <div class="cert-block">
+    <div class="cert-badge">
+      <span class="big">MSB</span>
+      <span class="blabel"><span class="dot"></span>U.S. FinCEN Registered</span>
+    </div>
+    <div class="cert-detail">
+      <h3>U.S. Money Services Business Registration — Verified</h3>
+      <p>Catcrs completed its MSB registration with the Financial Crimes Enforcement Network (FinCEN), a bureau of the U.S. Department of the Treasury, on October 21, 2021. This registration is publicly searchable in the FinCEN MSB registrant database and mandates ongoing compliance with Bank Secrecy Act obligations including AML controls, customer identification, and suspicious activity reporting.</p>
+      <span class="date">Registration Date: October 21, 2021 · Publicly Verifiable via FinCEN Database</span>
+    </div>
+  </div>
+
+  <div class="analyst-note"><strong>Nexoriath Note:</strong> MSB registration is a verifiable external fact — unlike many compliance disclosures that rely entirely on self-reporting, the FinCEN registration status can be independently confirmed by any reader through the public FinCEN MSB Search portal.</div>
+
+  <hr class="section-divider">
+
+  <div class="sec-head">
+    <span class="label">01 — BSA / AML Framework</span>
+    <h2>Anti-Money Laundering Controls</h2>
+    <p>Catcrs documents a full BSA-compliant AML program as required by its MSB designation, including customer due diligence, record retention, and suspicious activity reporting.</p>
+  </div>
+
+  <div class="two-col">
+    <ul class="feature-list">
+      <li><div class="icon">🪪</div><div><strong>Customer Identification (KYC)</strong><span>Identity verification procedures calibrated to transaction size, geography, and risk classification. Applied prior to account activation.</span></div></li>
+      <li><div class="icon">📁</div><div><strong>Record Retention</strong><span>All transactional and identification records retained per BSA requirements, with periodic review for completeness and accuracy.</span></div></li>
+      <li><div class="icon">🚩</div><div><strong>Suspicious Activity Reporting</strong><span>Compliance systems monitor for and file SARs with FinCEN in accordance with mandatory BSA reporting requirements.</span></div></li>
+    </ul>
+    <ul class="feature-list">
+      <li><div class="icon">⚖️</div><div><strong>Sanctions Screening</strong><span>OFAC and international sanctions lists are dynamically updated. All accounts and transactions are screened against high-risk databases.</span></div></li>
+      <li><div class="icon">🔍</div><div><strong>On-Chain Analytics</strong><span>Integrations with on-chain analytics partners assess wallet address risk profiles and exposure to illicit activity.</span></div></li>
+      <li><div class="icon">🔄</div><div><strong>Periodic Internal Review</strong><span>Compliance policies and customer risk classifications undergo recurring review incorporating regulatory updates and emerging threats.</span></div></li>
+    </ul>
+  </div>
+
+  <hr class="section-divider">
+
+  <div class="sec-head">
+    <span class="label">02 — FATF & Travel Rule</span>
+    <h2>Cross-Border Transfer Compliance</h2>
+    <p>Catcrs documents adaptation to FATF Recommendation 16 (Travel Rule) for VASPs, with ongoing work toward full cross-border information exchange capability.</p>
+  </div>
+
+  <div class="cards">
+    <div class="card"><div class="card-icon">✈️</div><h3>Travel Rule (R.16) Adaptation</h3><p>FATF Recommendation 16 requires VASPs to transmit originator and beneficiary information for cross-border transfers. Catcrs describes this as an area of continuous process and system improvement across jurisdictions.</p></div>
+    <div class="card"><div class="card-icon">🌐</div><h3>VASP Messaging Networks</h3><p>Catcrs is working toward interconnection with peer VASP messaging networks to enable compliant information exchange with counterpart exchanges in cross-border transfers.</p></div>
+    <div class="card"><div class="card-icon">🛑</div><h3>Fraud & Scam Detection</h3><p>Following FATF 2023–2025 updates on fraud prevention, behavioral analytics and anti-scam detection have been integrated into withdrawal and onboarding flows.</p></div>
+  </div>
+
+  <div class="analyst-note"><strong>Nexoriath Note:</strong> Travel Rule compliance remains an industry-wide challenge. Catcrs describes it as "continuous improvement" rather than fully resolved — which is an honest characterization of where most exchanges stand. Full completion requires counterpart exchange cooperation and is not unilaterally achievable.</div>
+
+  <hr class="section-divider">
+
+  <div class="sec-head">
+    <span class="label">03 — Jurisdictional Approach</span>
+    <h2>"Compliance Before Expansion" Policy</h2>
+    <p>Catcrs' stated policy is to establish local regulatory compliance before entering new markets — applying differential standards for KYC depth, product availability, and transaction limits by region.</p>
+  </div>
+
+  <div class="highlight-box">
+    <h3>Documented Jurisdictional Policy</h3>
+    <p>According to Catcrs' disclosures, before entering a new market the platform assesses local VASP regulatory requirements, licensing obligations, and payment partner availability. They partner with local compliance vendors and identity verification providers already operating within the relevant regulatory framework. High-risk jurisdictions and sanctioned territories are excluded from service availability by default. Derivatives access is determined by jurisdictional regulatory status, not market demand.</p>
+    <div class="tag-row">
+      <span class="tag">Compliance Before Expansion</span>
+      <span class="tag">Conservative Interpretation</span>
+      <span class="tag">Differential KYC Depth</span>
+      <span class="tag">Sanctioned Territory Exclusion</span>
+    </div>
+  </div>
+
+  <hr class="section-divider">
+
+  <div class="sec-head">
+    <span class="label">04 — Forward Roadmap</span>
+    <h2>Stated Compliance Priorities</h2>
+    <p>The following priorities are drawn from Catcrs' publicly disclosed roadmap. Nexoriath will update this analysis as milestones are completed.</p>
+  </div>
+
+  <div class="roadmap-grid">
+    <div class="roadmap-item"><div class="rnum">STATED PRIORITY 01</div><h4>Travel Rule Network Expansion</h4><p>Enhance Travel Rule coverage and connect to additional VASP messaging networks for compliant cross-border transfer information sharing with peer exchanges.</p></div>
+    <div class="roadmap-item"><div class="rnum">STATED PRIORITY 02</div><h4>Multi-Jurisdiction KYC Partners</h4><p>Integrate with additional regional KYC and payment partners, expanding compliant access in phases while maintaining strict onboarding standards per jurisdiction.</p></div>
+    <div class="roadmap-item"><div class="rnum">STATED PRIORITY 03</div><h4>Annual Penetration Test Publication</h4><p>Publish summaries of annual third-party penetration tests, providing external security verification alongside PoR disclosures.</p></div>
+    <div class="roadmap-item"><div class="rnum">STATED PRIORITY 04</div><h4>Regularized PoR Disclosure</h4><p>Transition from internal PoR trials to scheduled, recurring public disclosures with standardized methodology documentation and third-party review verification.</p></div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand"><div class="fn">NEXORIATH</div><div class="fs">Independent Exchange Research</div></div>
+    <p>This analysis is based on Catcrs' publicly available documentation. Nexoriath is not affiliated with Catcrs. Official exchange: <a href="https://catcrs.com" target="_blank">catcrs.com</a> · Support: <a href="mailto:support@catcrs.com">support@catcrs.com</a></p>
+    <p style="margin-top:6px;font-size:11px;">© 2025 Nexoriath — nexoriath.com</p>
+  </div>
+</footer>
+</body>
+</html>

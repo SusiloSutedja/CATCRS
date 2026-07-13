@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Background: Catcrs Exchange — Nexoriath</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Sora:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#080c14;--bg2:#0d1220;--border:rgba(99,179,237,.15);--accent:#3b9eff;--accent2:#00e5c8;--accent3:#7c5bff;--text:#e2ecff;--muted:#7b91b0;--card:rgba(255,255,255,.03);--glow:rgba(59,158,255,.12);}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;overflow-x:hidden;}
+  .top-banner{background:rgba(13,18,32,.95);border-bottom:1px solid var(--border);text-align:center;padding:9px 20px;font-family:'Space Mono',monospace;font-size:12px;color:var(--muted);position:sticky;top:0;z-index:1000;}
+  .top-banner a{color:var(--accent);text-decoration:none;font-weight:700;}.top-banner .sep{margin:0 12px;opacity:.3;}
+  nav{position:sticky;top:38px;z-index:999;background:rgba(8,12,20,.94);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:64px;}
+  .nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+  .nav-logo-mark{font-family:'Space Mono',monospace;font-size:13px;font-weight:700;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:.06em;}
+  .nav-logo-sub{font-size:11px;color:var(--muted);letter-spacing:.04em;font-family:'Space Mono',monospace;}
+  .nav-links{display:flex;gap:4px;}
+  .nav-links a{color:var(--muted);text-decoration:none;font-size:13px;padding:8px 14px;border-radius:8px;transition:all .2s;font-weight:600;}
+  .nav-links a:hover,.nav-links a.active{color:var(--accent);background:var(--glow);}
+  .page-hero{padding:72px 40px 48px;max-width:1140px;margin:0 auto;}
+  .page-tag{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent2);margin-bottom:14px;display:block;}
+  .page-hero h1{font-size:clamp(28px,4vw,50px);font-weight:700;letter-spacing:-.02em;margin-bottom:14px;}
+  .page-hero h1 .grad{background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+  .page-hero p{font-size:15.5px;color:var(--muted);max-width:660px;line-height:1.8;}
+  .source-note{display:inline-flex;align-items:center;gap:8px;background:rgba(124,91,255,.07);border:1px solid rgba(124,91,255,.18);border-radius:8px;padding:8px 14px;font-size:12px;color:#a89be0;margin-top:18px;}
+  .content{max-width:1140px;margin:0 auto;padding:0 40px 100px;}
+  .section-divider{border:none;border-top:1px solid var(--border);margin:56px 0;}
+  .sec-head{margin-bottom:36px;}
+  .sec-head .label{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.12em;color:var(--accent);text-transform:uppercase;margin-bottom:8px;display:block;}
+  .sec-head h2{font-size:clamp(20px,2.8vw,30px);font-weight:700;letter-spacing:-.01em;margin-bottom:10px;}
+  .sec-head p{font-size:14.5px;color:var(--muted);max-width:600px;line-height:1.75;}
+  .analyst-note{background:rgba(124,91,255,.06);border-left:3px solid var(--accent3);border-radius:0 10px 10px 0;padding:18px 22px;margin-bottom:36px;font-size:13.5px;color:#b0a0d8;line-height:1.7;}
+  .analyst-note strong{color:var(--accent3);}
+  .philosophy-block{background:linear-gradient(135deg,rgba(59,158,255,.06),rgba(0,229,200,.06));border:1px solid rgba(59,158,255,.18);border-radius:16px;padding:44px;margin-bottom:52px;}
+  .philosophy-block blockquote{font-size:clamp(18px,2.5vw,24px);font-weight:600;line-height:1.45;letter-spacing:-.01em;margin-bottom:18px;}
+  .philosophy-block blockquote span{color:var(--accent2);}
+  .philosophy-block p{font-size:14px;color:var(--muted);max-width:660px;line-height:1.8;}
+  .values-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-bottom:52px;}
+  .value-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:26px;}
+  .value-card .vi{font-size:26px;margin-bottom:10px;}
+  .value-card h4{font-size:15.5px;font-weight:700;margin-bottom:8px;}
+  .value-card p{font-size:13px;color:var(--muted);line-height:1.7;}
+  .team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+  .team-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:24px;}
+  .team-role{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.1em;color:var(--accent2);text-transform:uppercase;margin-bottom:6px;}
+  .team-name{font-size:17px;font-weight:700;margin-bottom:8px;}
+  .team-quote{font-size:11.5px;color:var(--accent);font-style:italic;margin-bottom:8px;font-family:'Space Mono',monospace;}
+  .team-desc{font-size:13px;color:var(--muted);line-height:1.65;}
+  .timeline{position:relative;padding-left:30px;}
+  .timeline::before{content:'';position:absolute;left:7px;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,var(--accent),transparent);}
+  .timeline-item{position:relative;margin-bottom:32px;}
+  .timeline-item::before{content:'';position:absolute;left:-26px;top:6px;width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px var(--accent);}
+  .timeline-date{font-family:'Space Mono',monospace;font-size:11px;color:var(--accent2);letter-spacing:.08em;margin-bottom:3px;}
+  .timeline-text{font-size:14px;color:var(--muted);}
+  footer{background:var(--bg2);border-top:1px solid var(--border);padding:32px 40px;}
+  .footer-inner{max-width:1140px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
+  .footer-brand .fn{font-family:'Space Mono',monospace;font-size:15px;font-weight:700;color:var(--accent);}
+  .footer-brand .fs{font-family:'Space Mono',monospace;font-size:10px;color:var(--muted);}
+  .footer-inner p{font-size:12px;color:var(--muted);max-width:460px;line-height:1.6;}
+  .footer-inner a{color:var(--accent);text-decoration:none;font-size:12px;}
+  @media(max-width:768px){nav{padding:0 16px;}.nav-links a{padding:5px 9px;font-size:11.5px;}.team-grid,.values-grid{grid-template-columns:1fr;}.page-hero,.content{padding-left:20px;padding-right:20px;}.philosophy-block{padding:28px;}}
+</style>
+</head>
+<body>
+<div class="top-banner">
+  Independent Research Platform <span class="sep">|</span>
+  Subject: <a href="https://catcrs.com" target="_blank">Catcrs Exchange (catcrs.com)</a>
+  <span class="sep">|</span> nexoriath.com is not affiliated with Catcrs
+</div>
+<nav>
+  <a href="index.html" class="nav-logo"><span class="nav-logo-mark">NEXORIATH</span><span class="nav-logo-sub">/ Exchange Research</span></a>
+  <div class="nav-links">
+    <a href="index.html">Overview</a><a href="security.html">Security</a><a href="compliance.html">Compliance</a>
+    <a href="products.html">Products</a><a href="about.html" class="active">Background</a>
+    <a href="knowledge.html">Research</a><a href="faq.html">FAQ</a>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <span class="page-tag">Analysis Track 04 — Operational Background</span>
+  <h1>Background Research:<br><span class="grad">Catcrs Exchange</span></h1>
+  <p>A documented summary of Catcrs' founding history, milestone timeline, disclosed team background, and stated operating philosophy — drawn from publicly available sources.</p>
+  <div class="source-note">⚠ Source: Catcrs publicly disclosed documentation. Nexoriath is not affiliated with Catcrs.</div>
+</div>
+
+<div class="content">
+
+  <div class="analyst-note"><strong>Nexoriath Note:</strong> The information on this page is drawn from Catcrs' own publicly disclosed documentation. Team identities, milestone dates, and stated philosophies represent Catcrs' self-disclosed information. Independent verification of individual team credentials is outside the scope of this analysis.</div>
+
+  <div class="philosophy-block">
+    <blockquote>Catcrs' stated philosophy: "Culture as System, <span>Trust as Productivity</span>"</blockquote>
+    <p>According to their whitepaper, Catcrs' long-term pledge is "security first, compliance as the foundation, transparency and verifiability, and practical usability." Their stated goal is to make these commitments observable and verifiable by users — not merely declared in marketing materials. Whether this philosophy is consistently realized in operations is what the preceding analysis tracks seek to assess.</p>
+  </div>
+
+  <div class="sec-head">
+    <span class="label">Disclosed Core Values</span>
+    <h2>Stated Operating Principles</h2>
+    <p>Catcrs documents four principles it states govern every decision in engineering, compliance, product, and communications.</p>
+  </div>
+
+  <div class="values-grid">
+    <div class="value-card"><div class="vi">🔐</div><h4>Security First</h4><p>Security is stated as never traded off for speed or convenience. Default-secure configurations and mandatory multi-factor authentication apply to all accounts. Disclosed as non-negotiable.</p></div>
+    <div class="value-card"><div class="vi">📋</div><h4>Compliance as Foundation</h4><p>Compliance is stated as a prerequisite for operation — not a constraint worked around. The disclosed policy is to complete regulatory requirements before entering new markets.</p></div>
+    <div class="value-card"><div class="vi">🔭</div><h4>Transparent & Verifiable</h4><p>Catcrs states it makes operations externally visible through status pages, PoR methodology, incident timelines, and root cause summaries — providing evaluation, not just assurance.</p></div>
+    <div class="value-card"><div class="vi">⚙️</div><h4>Practically Usable</h4><p>The stated principle is that interfaces should be explainable, predictable, and designed to reduce uncertainty — not amplify it. Fee structures and disclosures are stated to be explicitly bounded.</p></div>
+  </div>
+
+  <hr class="section-divider">
+
+  <div class="sec-head">
+    <span class="label">Disclosed Leadership</span>
+    <h2>Core Team</h2>
+    <p>The following team information is drawn directly from Catcrs' publicly disclosed documentation.</p>
+  </div>
+
+  <div class="team-grid">
+    <div class="team-card"><div class="team-role">Co-Founder & CEO</div><div class="team-name">Ethan Brooks</div><div class="team-quote">"Making invisible risks visible through clear rules."</div><div class="team-desc">Disclosed background: 10+ years in financial infrastructure and risk management. Leads overall platform strategy and governance.</div></div>
+    <div class="team-card"><div class="team-role">Co-Founder & CTO</div><div class="team-name">Maya Thompson</div><div class="team-quote">"Recoverability defines reliability."</div><div class="team-desc">Disclosed background: Former technical lead for large-scale trading systems. Led matching engine v2 reconstruction and observability platform.</div></div>
+    <div class="team-card"><div class="team-role">Chief Compliance Officer</div><div class="team-name">Rizky Putra</div><div class="team-quote">"Localized operations and conservative interpretation."</div><div class="team-desc">Disclosed background: Compliance attorney with multi-jurisdictional KYC, AML, sanctions, and licensing expertise.</div></div>
+    <div class="team-card"><div class="team-role">Chief Security Officer</div><div class="team-name">Elena Petrova</div><div class="team-quote">"Making practice into muscle memory."</div><div class="team-desc">Disclosed background: Offensive/defensive security and key custody expert. Drives threshold signature implementation and red-blue team exercises.</div></div>
+    <div class="team-card"><div class="team-role">Chief Product Officer</div><div class="team-name">Ava Mitchell</div><div class="team-quote">"Problem before solution, causality before conclusion."</div><div class="team-desc">Disclosed background: Specializes in trading experience design and risk education. Leads Catcrs Academy.</div></div>
+    <div class="team-card"><div class="team-role">Chief Financial Officer</div><div class="team-name">Michael Grant</div><div class="team-quote">"Explainable fees and clear boundaries in disclosures."</div><div class="team-desc">Disclosed background: Auditing and capital market experience. Manages fee governance and PoR disclosure framework.</div></div>
+  </div>
+
+  <hr class="section-divider">
+
+  <div class="sec-head">
+    <span class="label">Documented Milestone History</span>
+    <h2>Timeline: Oct 2020 — Oct 2025</h2>
+    <p>The following milestones are drawn from Catcrs' publicly disclosed operational history. They represent self-reported dates and events.</p>
+  </div>
+
+  <div class="timeline">
+    <div class="timeline-item"><div class="timeline-date">October 2020</div><div class="timeline-text">Project initiated. Technical and operational roadmap established with security and transparency as first principles.</div></div>
+    <div class="timeline-item"><div class="timeline-date">March 2021</div><div class="timeline-text">Alpha matching engine and strategic risk control prototype completed. Closed testing commenced.</div></div>
+    <div class="timeline-item"><div class="timeline-date">October 21, 2021</div><div class="timeline-text"><strong>U.S. MSB (FinCEN) registration completed.</strong> KYC/AML and sanctions screening processes implemented — this date is independently verifiable via the FinCEN MSB registrant database.</div></div>
+    <div class="timeline-item"><div class="timeline-date">February 2022</div><div class="timeline-text">Spot trading Beta launched. Cold/hot wallet v1 deployed with address reputation scoring and rules engine on deposit/withdrawal channels.</div></div>
+    <div class="timeline-item"><div class="timeline-date">May 2022</div><div class="timeline-text">Status page trial launched. External event timeline template established for standardized incident communication.</div></div>
+    <div class="timeline-item"><div class="timeline-date">August 2022</div><div class="timeline-text">First institutional market makers onboarded. API v1 released with integrated matching and risk control mechanisms.</div></div>
+    <div class="timeline-item"><div class="timeline-date">March 2023</div><div class="timeline-text">Market integrity rulebook expanded with manipulation detection and abnormal volatility circuit breakers.</div></div>
+    <div class="timeline-item"><div class="timeline-date">July 2023</div><div class="timeline-text">Educational and anti-scam content library launched with multilingual coverage.</div></div>
+    <div class="timeline-item"><div class="timeline-date">October 2023</div><div class="timeline-text">Matching engine v2 and API v3 (including FIX protocol) launched with significant latency and consistency improvements.</div></div>
+    <div class="timeline-item"><div class="timeline-date">May 2024</div><div class="timeline-text">Multi-region disaster recovery drills normalized. Rollback procedures standardized and regularly rehearsed.</div></div>
+    <div class="timeline-item"><div class="timeline-date">October 2024</div><div class="timeline-text">HSM and multi-signature strategies upgraded. Withdrawal delays and secondary confirmations deployed. Institutional settlement tools upgraded.</div></div>
+    <div class="timeline-item"><div class="timeline-date">May 2025</div><div class="timeline-text">Status page transparency upgraded with standardized major event timelines and root cause summaries.</div></div>
+    <div class="timeline-item"><div class="timeline-date">October 2025</div><div class="timeline-text">Internal Proof-of-Reserves (PoR) trial completed with third-party method review. Disclosure baseline established.</div></div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand"><div class="fn">NEXORIATH</div><div class="fs">Independent Exchange Research</div></div>
+    <p>This analysis is based on Catcrs' publicly available documentation. Nexoriath is not affiliated with Catcrs. Official exchange: <a href="https://catcrs.com" target="_blank">catcrs.com</a> · Support: <a href="mailto:support@catcrs.com">support@catcrs.com</a></p>
+    <p style="margin-top:6px;font-size:11px;">© 2025 Nexoriath — nexoriath.com</p>
+  </div>
+</footer>
+</body>
+</html>
